@@ -1,0 +1,11 @@
+C:\Users\Avinash\Documents\Paragliding Management System\Paragliding Management System\DataAccessLayer\bin\Debug\netcoreapp2.0\DataAccessLayer.deps.json
+C:\Users\Avinash\Documents\Paragliding Management System\Paragliding Management System\DataAccessLayer\bin\Debug\netcoreapp2.0\DataAccessLayer.dll
+C:\Users\Avinash\Documents\Paragliding Management System\Paragliding Management System\DataAccessLayer\bin\Debug\netcoreapp2.0\DataAccessLayer.pdb
+C:\Users\Avinash\Documents\Paragliding Management System\Paragliding Management System\DataAccessLayer\bin\Debug\netcoreapp2.0\System.Data.SqlClient.dll
+C:\Users\Avinash\Documents\Paragliding Management System\Paragliding Management System\DataAccessLayer\bin\Debug\netcoreapp2.0\System.Data.SqlClient.xml
+C:\Users\Avinash\Documents\Paragliding Management System\Paragliding Management System\DataAccessLayer\obj\Debug\netcoreapp2.0\DataAccessLayer.csprojResolveAssemblyReference.cache
+C:\Users\Avinash\Documents\Paragliding Management System\Paragliding Management System\DataAccessLayer\obj\Debug\netcoreapp2.0\DataAccessLayer.csproj.CoreCompileInputs.cache
+C:\Users\Avinash\Documents\Paragliding Management System\Paragliding Management System\DataAccessLayer\obj\Debug\netcoreapp2.0\DataAccessLayer.AssemblyInfoInputs.cache
+C:\Users\Avinash\Documents\Paragliding Management System\Paragliding Management System\DataAccessLayer\obj\Debug\netcoreapp2.0\DataAccessLayer.AssemblyInfo.cs
+C:\Users\Avinash\Documents\Paragliding Management System\Paragliding Management System\DataAccessLayer\obj\Debug\netcoreapp2.0\DataAccessLayer.dll
+C:\Users\Avinash\Documents\Paragliding Management System\Paragliding Management System\DataAccessLayer\obj\Debug\netcoreapp2.0\DataAccessLayer.pdb
