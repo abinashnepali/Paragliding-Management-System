@@ -3,39 +3,14 @@ using System.Data.SqlClient;
 using System.Data;
 using System.Collections.Generic;
 
-namespace DataAccessLayer
+namespace DataAccessLayer.Operations
 {
-    public class DAL
+    public class Registerdb
     {
-        string connectionString = "Data Source=.;Initial Catalog=ParaglidingMS;Integrated Security=True;Connect Timeout=120";
-
-        public bool ValidateUser(string email, string password)
-        {
-            using (SqlConnection con = new SqlConnection(connectionString))
-            {
-                SqlCommand cmd = new SqlCommand("UserLogin", con);
-
-                cmd.CommandType = CommandType.StoredProcedure;
-
-                cmd.Parameters.AddWithValue("@email", email);
-                cmd.Parameters.AddWithValue("@password", password);
-
-                con.Open();
-                int count = (int)cmd.ExecuteScalar();
-                if (count == 1)
-                {
-                    return true;
-                }
-                else
-                {
-                    return false;
-                }
-            }
-        }
 
         public int AddUpdateUser(Users user)
         {
-            using (SqlConnection con = new SqlConnection(connectionString))
+            using (SqlConnection con = new SqlConnection(Connection.connectionString))
             {
                 SqlCommand cmd = new SqlCommand("AddUpdateUser", con);
 
@@ -56,10 +31,11 @@ namespace DataAccessLayer
                 return int.Parse(cmd.Parameters["@status"].Value.ToString());
             }
         }
+        
 
-        public int DeleteUser(int userID)
+        public int DeleteUser(int? userID)
         {
-            using (SqlConnection con = new SqlConnection(connectionString))
+            using (SqlConnection con = new SqlConnection(Connection.connectionString))
             {
 
                 SqlCommand cmd = new SqlCommand("DeleteUser", con);
@@ -77,7 +53,7 @@ namespace DataAccessLayer
         public IEnumerable<Users> GetAllUsers()
         {
             List<Users> lstUser = new List<Users>();
-            using (SqlConnection con = new SqlConnection(connectionString))
+            using (SqlConnection con = new SqlConnection(Connection.connectionString))
             {
                 SqlCommand cmd = new SqlCommand("GetAllUsers", con);
 
@@ -107,7 +83,7 @@ namespace DataAccessLayer
         public Users GetUserByID(int? id)
         {
             Users user = new Users();
-            using (SqlConnection con = new SqlConnection(connectionString))
+            using (SqlConnection con = new SqlConnection(Connection.connectionString))
             {
                 SqlCommand cmd = new SqlCommand("GetUserById", con);
                 cmd.CommandType = CommandType.StoredProcedure;
