@@ -22,7 +22,7 @@ namespace DataAccessLayer.Operations
                 cmd.Parameters.AddWithValue("@email", user.Email);
                 cmd.Parameters.AddWithValue("@password", user.Password);
                 cmd.Parameters.AddWithValue("@phone", user.Phone);
-                cmd.Parameters.AddWithValue("@roleType", user.RoleType);
+                cmd.Parameters.AddWithValue("@roleType", 3);
                 cmd.Parameters.Add("@status", SqlDbType.Int);
                 cmd.Parameters["@status"].Direction = ParameterDirection.Output;
                 con.Open();

@@ -22,6 +22,10 @@ namespace Paragliding_Management_System
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc();
+            
+            // Adds a default in memory implementation of IDistributedCache
+            services.AddDistributedMemoryCache();
+            services.AddSession();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -38,6 +42,9 @@ namespace Paragliding_Management_System
             }
 
             app.UseStaticFiles();
+
+            // Session call
+            app.UseSession();
 
             app.UseMvc(routes =>
             {

@@ -51,7 +51,7 @@ namespace DataAccessLayer.Operations
 
         public IEnumerable<Staff> GetAllStaff()
         {
-            List<Staff> lstUser = new List<Staff>();
+            List<Staff> lstStaff = new List<Staff>();
             using (SqlConnection con = new SqlConnection(Connection.connectionString))
             {
                 SqlCommand cmd = new SqlCommand("GetAllStaffs", con);
@@ -75,11 +75,11 @@ namespace DataAccessLayer.Operations
                     staff.Designation = rdr["Designation"].ToString();
                     staff.HireDate = Convert.ToDateTime(rdr["HireDate"]);
 
-                    lstUser.Add(staff);
+                    lstStaff.Add(staff);
                 }
                 con.Close();
             }
-            return lstUser;
+            return lstStaff;
         }
 
         public Staff GetStaffByID(int? id)

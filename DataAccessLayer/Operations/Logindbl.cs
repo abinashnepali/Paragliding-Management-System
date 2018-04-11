@@ -32,6 +32,35 @@ namespace DataAccessLayer.Operations
             }
         }
 
+        public Users GetUserDetails(string email)
+        {
+            Users user = new Users();
+            using (SqlConnection con = new SqlConnection(Connection.connectionString))
+            {
+                SqlCommand cmd = new SqlCommand("UserDetails", con);
+
+                cmd.CommandType = CommandType.StoredProcedure;
+
+                cmd.Parameters.AddWithValue("@email", email);
+
+                con.Open();
+                SqlDataReader rdr = cmd.ExecuteReader();
+
+                while (rdr.Read())
+                {
+                    user.UserID = Convert.ToInt32(rdr["UserID"]);
+                    user.FirstName = rdr["FirstName"].ToString();
+                    user.LastName = rdr["LastName"].ToString();
+                    user.Email = rdr["Email"].ToString();
+                    user.Phone = rdr["Phone"].ToString();
+                    user.RoleType = Convert.ToInt32(rdr["RoleType"]);
+                }
+                con.Close();
+                return user;
+
+            }
+        }
+
         public int DeleteUser(int? userID)
         {
             using (SqlConnection con = new SqlConnection(Connection.connectionString))

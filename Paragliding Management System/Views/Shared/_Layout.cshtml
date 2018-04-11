@@ -35,8 +35,15 @@
                     <li><a asp-area="" asp-controller="Home" asp-action="Contact">Contact</a></li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
-                    <li><a asp-area="" asp-controller="Register" asp-action=""><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
-                    <li><a asp-area="" asp-controller="Login" asp-action=""><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+                    @if (ViewData["FirstName"] == null)
+                    {
+                        <li><a asp-area="" asp-controller="Register" asp-action=""><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+                        <li><a asp-area="" asp-controller="Login" asp-action=""><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+                    }
+                    else
+                    {
+                        <li>@ViewData["FirstName"] + '' + ViewData["LastName"]</li>
+                    }
                 </ul>
             </div>
         </div>
