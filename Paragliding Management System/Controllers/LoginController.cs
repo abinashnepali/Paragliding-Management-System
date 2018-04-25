@@ -24,7 +24,7 @@ namespace Paragliding_Management_System.Controllers
             {
                 Users user = dbObj.GetUserDetails(email);
                 string role = Enum.GetName(typeof(Role), user.RoleType);
-                
+                HttpContext.Session.SetString("id", user.UserID.ToString());
                 HttpContext.Session.SetString("firstName", user.FirstName);
                 HttpContext.Session.SetString("lastName", user.LastName);
                 HttpContext.Session.SetString("email", user.Email);

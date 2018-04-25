@@ -5,7 +5,7 @@ using System.Collections.Generic;
 
 namespace DataAccessLayer.Operations
 {
-    public class Registerdb
+    public class UserDbl
     {
 
         public int AddUpdateUser(Users user)
@@ -20,6 +20,10 @@ namespace DataAccessLayer.Operations
                 cmd.Parameters.AddWithValue("@firstName", user.FirstName);
                 cmd.Parameters.AddWithValue("@lastName", user.LastName);
                 cmd.Parameters.AddWithValue("@email", user.Email);
+                if (user.Password == null)
+                {
+                    user.Password = " ";
+                }
                 cmd.Parameters.AddWithValue("@password", user.Password);
                 cmd.Parameters.AddWithValue("@phone", user.Phone);
                 cmd.Parameters.AddWithValue("@roleType", 3);

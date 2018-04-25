@@ -3,13 +3,21 @@
 @{
     ViewData["Title"] = "Register";
 }
+@section Styles{
+    <link href="~/css/staff.css" rel="stylesheet" />
+}
 
 <h2>Register</h2>
-<h4>Users</h4>
+<h4>Staff</h4>
 <hr />
-<div class="row">
+<div class="row staffController">
+    <div class="divImg">
+        <div class="imgPrev" style="display:none;"></div>
+        <p id="imgText" class="imgText">Click or Drag Image To Upload</p>
+        <input type="file" id="imgUpload" name="file" multiple />
+    </div>
     <div class="col-md-4">
-        <form asp-action="Add">
+        <form asp-action="Add" method="post" enctype="multipart/form-data">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
                 <label asp-for="FirstName" class="control-label"></label>
@@ -55,6 +63,7 @@
 </div>
 @section Scripts {
     @{await
-      Html.RenderPartialAsync("_ValidationScriptsPartial");
+          Html.RenderPartialAsync("_ValidationScriptsPartial");
     }
+    <script src="~/js/staff.js"></script>
 }

@@ -12,6 +12,7 @@ namespace DataAccessLayer
         public string Address { get; set; }
         public string Phone { get; set; }
         public string Email { get; set; }
+        public string Photo { get; set; }
         public DateTime HireDate { get; set; }
         public bool IsDeleted { get; set; }
         public DateTime DeletedOn { get; set; }

@@ -8,13 +8,16 @@
     <environment include="Development">
         <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
         <link rel="stylesheet" href="~/css/site.css" />
+        <link rel="stylesheet" href="~/lib/jquery-ui-1.12.1.custom/jquery-ui.min.css" />
     </environment>
     <environment exclude="Development">
         <link rel="stylesheet" href="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.7/css/bootstrap.min.css"
               asp-fallback-href="~/lib/bootstrap/dist/css/bootstrap.min.css"
               asp-fallback-test-class="sr-only" asp-fallback-test-property="position" asp-fallback-test-value="absolute" />
         <link rel="stylesheet" href="~/css/site.min.css" asp-append-version="true" />
+        <link rel="stylesheet" href="~/lib/jquery-ui-1.12.1.custom/jquery-ui.min.css" />
     </environment>
+    @RenderSection("Styles", required: false)
 </head>
 <body>
     <nav class="navbar navbar-inverse navbar-fixed-top">
@@ -35,14 +38,16 @@
                     <li><a asp-area="" asp-controller="Home" asp-action="Contact">Contact</a></li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
-                    @if (ViewData["FirstName"] == null)
+                    @if (ViewData["Name"] == " ")
                     {
                         <li><a asp-area="" asp-controller="Register" asp-action=""><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
                         <li><a asp-area="" asp-controller="Login" asp-action=""><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
                     }
                     else
                     {
-                        <li>@ViewData["FirstName"] + '' + ViewData["LastName"]</li>
+                        <li><a asp-area="" asp-controller="User" asp-action="Edit"><span class="glyphicon glyphicon-user"></span> @ViewData["Name"]</a></li>
+                        <li><a asp-area="" asp-controller="Logout" asp-action=""><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
+
                     }
                 </ul>
             </div>
@@ -58,6 +63,7 @@
 
     <environment include="Development">
         <script src="~/lib/jquery/dist/jquery.js"></script>
+        <script src="~/lib/jquery-ui-1.12.1.custom/jquery-ui.min.js"></script>
         <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
         <script src="~/js/site.js" asp-append-version="true"></script>
     </environment>
@@ -68,6 +74,7 @@
                 crossorigin="anonymous"
                 integrity="sha384-K+ctZQ+LL8q6tP7I94W+qzQsfRV2a+AfHIi9k8z8l9ggpc8X+Ytst4yBo/hH+8Fk">
         </script>
+        <script src="~/lib/jquery-ui-1.12.1.custom/jquery-ui.min.js"></script>
         <script src="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.7/bootstrap.min.js"
                 asp-fallback-src="~/lib/bootstrap/dist/js/bootstrap.min.js"
                 asp-fallback-test="window.jQuery && window.jQuery.fn && window.jQuery.fn.modal"

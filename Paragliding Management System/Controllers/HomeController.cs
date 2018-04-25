@@ -11,19 +11,10 @@ namespace Paragliding_Management_System.Controllers
 {
     public class HomeController : Controller
     {
-        public HomeController()
-        {
-            if (HttpContext.Current.Session != null)
-            {
-                ViewData["FirstName"] = HttpContext.Session.GetString("firstName");
-                ViewData["LastName"] = HttpContext.Session.GetString("lastName");
-                ViewData["Email"] = HttpContext.Session.GetString("email");
-                ViewData["Role"] = HttpContext.Session.GetString("role");
-            }
-        }
-
         public IActionResult Index()
         {
+            string name = HttpContext.Session.GetString("firstName") + " " + HttpContext.Session.GetString("lastName");
+            ViewData["Name"] = name;
             return View();
         }
 

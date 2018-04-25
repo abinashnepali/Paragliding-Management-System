@@ -14,10 +14,10 @@ namespace Paragliding_Management_System.Controllers
 
         [HttpGet]
         [Route("api/pilot/search")]
-        public IEnumerable<Staff> Index(int? offSet)
+        public IEnumerable<Staff> Index(int? offSet, DateTime date)
         {
             offSet = offSet == null ? 0 : offSet;
-            return dbObj.Index(offSet);
+            return dbObj.Index(offSet, date);
         }
     }
 }

@@ -10,7 +10,7 @@ namespace Paragliding_Management_System.Controllers
 {
     public class RegisterController : Controller
     {
-        Registerdb objDal = new Registerdb();
+        UserDbl objDal = new UserDbl();
 
         [HttpGet]
         public IActionResult Index()

@@ -8,7 +8,7 @@ namespace DataAccessLayer.Operations
 {
     public class SearchPilot
     {
-        public IEnumerable<Staff> Index(int? offSet)
+        public IEnumerable<Staff> Index(int? offSet, DateTime date)
         {
             List<Staff> lstPilot = new List<Staff>();
 
@@ -16,6 +16,7 @@ namespace DataAccessLayer.Operations
             {
                 SqlCommand cmd = new SqlCommand("SearchPilot", con);
                 cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@dateTime", date);
                 cmd.Parameters.AddWithValue("@offSet", offSet);
 
                 con.Open();

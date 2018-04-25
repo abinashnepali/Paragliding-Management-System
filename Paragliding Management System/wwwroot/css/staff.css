@@ -1,0 +1,33 @@
+﻿#imgUpload {
+    opacity: 0.0;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+}
+.divImg {
+    position: relative;
+    float: right;
+    width: 150px;
+    height: 150px;
+    border: solid 1px;
+}
+.imgText {
+    font-size:small;
+    font-style:italic;
+    text-align:center;
+    margin-top:60px;
+}
+.imgPrev {
+width:100%;
+height:100%;
+object-fit:cover;
+}
+.imgPreview {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
