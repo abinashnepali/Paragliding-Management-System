@@ -124,13 +124,20 @@ namespace Paragliding_Management_System.Controllers
         [HttpPost]
         public async Task<IActionResult> UploadImage(IFormFile file)
         {
-            var fileName = ContentDispositionHeaderValue.Parse(file.ContentDisposition).FileName.Trim('"');// FileName returns "fileName.ext"(with double quotes) in beta 3
-            var filePath = hostingEnvironment.WebRootPath + "\\images\\staff\\" + fileName;
-            using (var fileStream = new FileStream(Path.Combine(filePath), FileMode.Create))
+            try
             {
-                await file.CopyToAsync(fileStream);
+                var fileName = ContentDispositionHeaderValue.Parse(file.ContentDisposition).FileName.Trim('"');// FileName returns "fileName.ext"(with double quotes) in beta 3
+                var filePath = hostingEnvironment.WebRootPath + "\\images\\staff\\" + fileName;
+                using (var fileStream = new FileStream(Path.Combine(filePath), FileMode.Create))
+                {
+                    await file.CopyToAsync(fileStream);
+                }
+                return Json(fileName);// PRG
             }
-            return Json(fileName);// PRG
+            catch (Exception ex)
+            {
+                throw;
+            }
         }
     }
 }
