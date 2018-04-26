@@ -25,10 +25,6 @@ namespace Paragliding_Management_System.Controllers
             {
                 Users user = dbObj.GetUserDetails(email);
                 HttpContext.Session.SetString("UserDet", JsonConvert.SerializeObject(user));
-                //var str = context.Session.GetString(key);
-                //var obj = JsonConvert.DeserializeObject<MyType>(str);
-
-
                 //string role = Enum.GetName(typeof(Role), user.RoleType);
                 //HttpContext.Session.SetString("id", user.UserID.ToString());
                 //HttpContext.Session.SetString("firstName", user.FirstName);

@@ -22,7 +22,6 @@ namespace Paragliding_Management_System
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc();
-            
             // Adds a default in memory implementation of IDistributedCache
             services.AddDistributedMemoryCache();
             services.AddSession(options =>
