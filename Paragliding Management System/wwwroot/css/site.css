@@ -3,6 +3,10 @@
     padding-bottom: 20px;
 }
 
+.btn-space {
+    margin-right: 5px;
+}
+
 /* Wrapping element */
 /* Set some basic padding to keep content from hitting the edges */
 .body-content {

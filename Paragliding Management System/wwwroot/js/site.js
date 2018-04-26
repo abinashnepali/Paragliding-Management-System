@@ -22,8 +22,8 @@ $(function () {
                         htmlDom += v.firstName + ' ' + v.lastName;
                         htmlDom += "</td>";
                         htmlDom += "<td>";
-                        htmlDom += "<button type='button' class='btn btn-success'>Book Now</button>";
-                        htmlDom += "<button type='button' class='btn btn-warning hide-pilot'>Hide</button>";
+                        htmlDom += "<button type='button' class='btn btn-success btn-space'>Hire</button>";
+                        htmlDom += "<button type='button' class='btn btn-warning hide-pilot btn-space'>Hide</button>";
                         htmlDom += "</td>";
                         htmlDom += "</tr>";
                     });
