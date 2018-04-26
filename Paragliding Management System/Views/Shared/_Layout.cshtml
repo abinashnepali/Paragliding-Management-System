@@ -38,14 +38,14 @@
                     <li><a asp-area="" asp-controller="Home" asp-action="Contact">Contact</a></li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
-                    @if (ViewData["Name"] == " ")
+                    @if (ViewBag.Name == "")
                     {
                         <li><a asp-area="" asp-controller="Register" asp-action=""><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
                         <li><a asp-area="" asp-controller="Login" asp-action=""><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
                     }
                     else
                     {
-                        <li><a asp-area="" asp-controller="User" asp-action="Edit"><span class="glyphicon glyphicon-user"></span> @ViewData["Name"]</a></li>
+                        <li><a asp-area="" asp-controller="User" asp-action="Edit"><span class="glyphicon glyphicon-user"></span> @ViewBag.Name</a></li>
                         <li><a asp-area="" asp-controller="Logout" asp-action=""><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
 
                     }
