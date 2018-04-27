@@ -14,14 +14,24 @@ namespace Paragliding_Management_System.Controllers
 {
     public class HomeController : Controller
     {
+        private JObject UserEmail { get; set; }
         public IActionResult Index()
         {
-            string sessionVar = HttpContext.Session.GetString("UserDet"), name = string.Empty;
+            string sessionVar = HttpContext.Session.GetString("UserDet"), name = string.Empty, role = string.Empty;
             if (sessionVar != null)
             {
                 name = JsonConvert.DeserializeObject(sessionVar).ToString();
-            }            
-            ViewBag.Name = name;
+                UserEmail = JObject.Parse(name);
+                name = (string)UserEmail["Email"];
+                role = (string)UserEmail["RoleType"];
+                TempData["Name"] = name;
+                TempData["RoleID"] = role;
+            }
+            else
+            {
+                TempData["Name"] = null;
+                TempData["RoleID"] = null;
+            }
             return View();
         }
 

@@ -14,7 +14,7 @@ namespace Paragliding_Management_System.Controllers
         UserDbl dalObj = new UserDbl();
         public IActionResult Index()
         {
-            if (string.IsNullOrEmpty(HttpContext.Session.GetString("firstName")))
+            if (string.IsNullOrEmpty(HttpContext.Session.GetString("UserDet")))
             {
                 return RedirectToAction("Index", "Home");
             }

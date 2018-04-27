@@ -38,16 +38,35 @@
                     <li><a asp-area="" asp-controller="Home" asp-action="Contact">Contact</a></li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
-                    @if (ViewBag.Name == "")
+                    @if (TempData["Name"] != null)
                     {
-                        <li><a asp-area="" asp-controller="Register" asp-action=""><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
-                        <li><a asp-area="" asp-controller="Login" asp-action=""><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+                        TempData.Keep("Name");
+                        if (TempData["RoleID"] != null)
+                        {
+                            var roleId = TempData["RoleID"].ToString();
+                            TempData.Keep("RoleID");
+                            if (roleId == "1")
+                            {
+                                //Superuser
+                            }
+                            if (roleId == "1" || roleId == "2")
+                            {
+                                // Staff
+                                <li><a asp-area="" asp-controller="User" asp-action="Index">User</a></li>
+                                <li><a asp-area="" asp-controller="Staff" asp-action="Index">Staff</a></li>
+                            }
+                            if (roleId == "1" || roleId == "2" || roleId == "3")
+                            {
+                                //client
+                                <li><a asp-area="" asp-controller="User" asp-action="Edit"><span class="glyphicon glyphicon-user"></span> @TempData["Name"].ToString()</a></li>
+                                <li><a asp-area="" asp-controller="Logout" asp-action=""><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
+                            }
+                        }
                     }
                     else
                     {
-                        <li><a asp-area="" asp-controller="User" asp-action="Edit"><span class="glyphicon glyphicon-user"></span> @ViewBag.Name</a></li>
-                        <li><a asp-area="" asp-controller="Logout" asp-action=""><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
-
+                        <li><a asp-area="" asp-controller="Register" asp-action=""><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+                        <li><a asp-area="" asp-controller="Login" asp-action=""><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
                     }
                 </ul>
             </div>

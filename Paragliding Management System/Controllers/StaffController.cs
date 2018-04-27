@@ -24,7 +24,7 @@ namespace Paragliding_Management_System.Controllers
 
         public IActionResult Index()
         {
-            string firstName = HttpContext.Session.GetString("firstName");
+            string firstName = HttpContext.Session.GetString("UserDet");
             if (String.IsNullOrEmpty(firstName))
             {
                 return RedirectToAction("Index", "Login");
@@ -47,7 +47,7 @@ namespace Paragliding_Management_System.Controllers
                 objDal.AddUpdateStaff(staff);
                 return RedirectToAction("Index", "Staff");
             }
-            return View();
+            return View(staff);
         }
 
         [HttpGet]
