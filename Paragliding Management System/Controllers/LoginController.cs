@@ -6,6 +6,7 @@ using DataAccessLayer;
 using DataAccessLayer.Operations;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
 
 namespace Paragliding_Management_System.Controllers
 {
@@ -23,12 +24,13 @@ namespace Paragliding_Management_System.Controllers
             if (dbObj.ValidateUser(email, password))
             {
                 Users user = dbObj.GetUserDetails(email);
-                string role = Enum.GetName(typeof(Role), user.RoleType);
-                HttpContext.Session.SetString("id", user.UserID.ToString());
-                HttpContext.Session.SetString("firstName", user.FirstName);
-                HttpContext.Session.SetString("lastName", user.LastName);
-                HttpContext.Session.SetString("email", user.Email);
-                HttpContext.Session.SetString("role", role);
+                HttpContext.Session.SetString("UserDet", JsonConvert.SerializeObject(user));
+                //string role = Enum.GetName(typeof(Role), user.RoleType);
+                //HttpContext.Session.SetString("id", user.UserID.ToString());
+                //HttpContext.Session.SetString("firstName", user.FirstName);
+                //HttpContext.Session.SetString("lastName", user.LastName);
+                //HttpContext.Session.SetString("email", user.Email);
+                //HttpContext.Session.SetString("role", role);
                 return RedirectToAction("Index", "Home");
 
             }

@@ -1,13 +1,14 @@
-C:\Users\Avinash\Documents\Paragliding Management System\Paragliding Management System\Paragliding Management System\bin\Debug\netcoreapp2.0\Paragliding Management System.deps.json
-C:\Users\Avinash\Documents\Paragliding Management System\Paragliding Management System\Paragliding Management System\bin\Debug\netcoreapp2.0\Paragliding Management System.runtimeconfig.json
-C:\Users\Avinash\Documents\Paragliding Management System\Paragliding Management System\Paragliding Management System\bin\Debug\netcoreapp2.0\Paragliding Management System.runtimeconfig.dev.json
-C:\Users\Avinash\Documents\Paragliding Management System\Paragliding Management System\Paragliding Management System\bin\Debug\netcoreapp2.0\Paragliding Management System.dll
-C:\Users\Avinash\Documents\Paragliding Management System\Paragliding Management System\Paragliding Management System\bin\Debug\netcoreapp2.0\Paragliding Management System.pdb
-C:\Users\Avinash\Documents\Paragliding Management System\Paragliding Management System\Paragliding Management System\bin\Debug\netcoreapp2.0\DataAccessLayer.dll
-C:\Users\Avinash\Documents\Paragliding Management System\Paragliding Management System\Paragliding Management System\bin\Debug\netcoreapp2.0\DataAccessLayer.pdb
-C:\Users\Avinash\Documents\Paragliding Management System\Paragliding Management System\Paragliding Management System\obj\Debug\netcoreapp2.0\Paragliding Management System.csprojResolveAssemblyReference.cache
-C:\Users\Avinash\Documents\Paragliding Management System\Paragliding Management System\Paragliding Management System\obj\Debug\netcoreapp2.0\Paragliding Management System.csproj.CoreCompileInputs.cache
-C:\Users\Avinash\Documents\Paragliding Management System\Paragliding Management System\Paragliding Management System\obj\Debug\netcoreapp2.0\Paragliding Management System.AssemblyInfoInputs.cache
-C:\Users\Avinash\Documents\Paragliding Management System\Paragliding Management System\Paragliding Management System\obj\Debug\netcoreapp2.0\Paragliding Management System.AssemblyInfo.cs
-C:\Users\Avinash\Documents\Paragliding Management System\Paragliding Management System\Paragliding Management System\obj\Debug\netcoreapp2.0\Paragliding Management System.dll
-C:\Users\Avinash\Documents\Paragliding Management System\Paragliding Management System\Paragliding Management System\obj\Debug\netcoreapp2.0\Paragliding Management System.pdb
+D:\ProjectBackup\Core\Paragliding\Paragliding-Management-System\Paragliding Management System\bin\Debug\netcoreapp2.0\Paragliding Management System.deps.json
+D:\ProjectBackup\Core\Paragliding\Paragliding-Management-System\Paragliding Management System\bin\Debug\netcoreapp2.0\Paragliding Management System.runtimeconfig.json
+D:\ProjectBackup\Core\Paragliding\Paragliding-Management-System\Paragliding Management System\bin\Debug\netcoreapp2.0\Paragliding Management System.runtimeconfig.dev.json
+D:\ProjectBackup\Core\Paragliding\Paragliding-Management-System\Paragliding Management System\bin\Debug\netcoreapp2.0\Paragliding Management System.dll
+D:\ProjectBackup\Core\Paragliding\Paragliding-Management-System\Paragliding Management System\bin\Debug\netcoreapp2.0\Paragliding Management System.pdb
+D:\ProjectBackup\Core\Paragliding\Paragliding-Management-System\Paragliding Management System\bin\Debug\netcoreapp2.0\DataAccessLayer.dll
+D:\ProjectBackup\Core\Paragliding\Paragliding-Management-System\Paragliding Management System\bin\Debug\netcoreapp2.0\DataAccessLayer.pdb
+D:\ProjectBackup\Core\Paragliding\Paragliding-Management-System\Paragliding Management System\obj\Debug\netcoreapp2.0\Paragliding Management System.csprojResolveAssemblyReference.cache
+D:\ProjectBackup\Core\Paragliding\Paragliding-Management-System\Paragliding Management System\obj\Debug\netcoreapp2.0\Paragliding Management System.csproj.CoreCompileInputs.cache
+D:\ProjectBackup\Core\Paragliding\Paragliding-Management-System\Paragliding Management System\obj\Debug\netcoreapp2.0\Paragliding Management System.AssemblyInfoInputs.cache
+D:\ProjectBackup\Core\Paragliding\Paragliding-Management-System\Paragliding Management System\obj\Debug\netcoreapp2.0\Paragliding Management System.AssemblyInfo.cs
+D:\ProjectBackup\Core\Paragliding\Paragliding-Management-System\Paragliding Management System\obj\Debug\netcoreapp2.0\Paragliding Management System.csproj.CopyComplete
+D:\ProjectBackup\Core\Paragliding\Paragliding-Management-System\Paragliding Management System\obj\Debug\netcoreapp2.0\Paragliding Management System.dll
+D:\ProjectBackup\Core\Paragliding\Paragliding-Management-System\Paragliding Management System\obj\Debug\netcoreapp2.0\Paragliding Management System.pdb
