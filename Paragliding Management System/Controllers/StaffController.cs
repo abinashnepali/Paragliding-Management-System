@@ -136,7 +136,7 @@ namespace Paragliding_Management_System.Controllers
             }
             catch (Exception ex)
             {
-                throw;
+                throw ex;
             }
         }
     }

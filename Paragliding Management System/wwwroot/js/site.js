@@ -15,7 +15,7 @@ $(function () {
                     $.each(data, function (k, v) {
                         htmlDom += "<tr>";
                         htmlDom += "<td>";
-                        v.photo = v.photo == null ? "/images/noimage.png" : v.photo;
+                        v.photo = v.photo === null ? "/images/noimage.png" : v.photo;
                         htmlDom += "<img src='" + v.photo + "' alt='" + v.firstName + ' ' + v.lastName + "' class='img-responsive img-thumbnail' style='width: 150px; height: auto;'>";
                         htmlDom += "</td>";
                         htmlDom += "<td>";
