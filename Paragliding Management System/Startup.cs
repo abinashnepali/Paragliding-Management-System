@@ -1,4 +1,5 @@
 ﻿using System;
+using DataAccessLayer.Operations;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -21,6 +22,7 @@ namespace Paragliding_Management_System
             services.AddMvc();
             // Adds a default in memory implementation of IDistributedCache
             services.AddDistributedMemoryCache();
+            services.AddTransient(typeof(BookingDbl));
             services.AddSession(options =>
             {
                 // Set a short timeout for easy testing.
