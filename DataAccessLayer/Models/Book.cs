@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace DataAccessLayer
 {
@@ -12,5 +13,6 @@ namespace DataAccessLayer
         public int BookedBy { get; set; }
         public int BookPilotMappingID { get; set; }
         public int StaffID { get; set; }
+        public Users Users { get; set; }
     }
 }
