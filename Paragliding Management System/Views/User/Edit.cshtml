@@ -24,7 +24,7 @@
                 <span asp-validation-for="LastName" class="text-danger"></span>
             </div>
 
-            <input type="hidden" asp-for="Password"/>
+            <input type="hidden" asp-for="Password" />
 
             <div class="form-group">
                 <label asp-for="Email" class="control-label"></label>
@@ -43,3 +43,8 @@
         </form>
     </div>
 </div>
+@section Scripts {
+    @{await
+          Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

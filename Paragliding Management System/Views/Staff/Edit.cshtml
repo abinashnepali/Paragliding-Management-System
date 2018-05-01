@@ -1,8 +1,8 @@
 ﻿@model DataAccessLayer.Staff
 
-    @{ 
-        ViewData["Title"] = "Edit";
-    }
+@{
+    ViewData["Title"] = "Edit";
+}
 <h2>Edit</h2>
 <h4>Staff</h4>
 <hr />
@@ -53,3 +53,8 @@
         </form>
     </div>
 </div>
+@section Scripts {
+    @{await
+          Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
