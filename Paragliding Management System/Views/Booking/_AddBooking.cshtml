@@ -1,0 +1,64 @@
+﻿@model DataAccessLayer.Book
+
+<h4>Book</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="AddBooking">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="BookID" class="control-label"></label>
+                <input asp-for="BookID" class="form-control" />
+                <span asp-validation-for="BookID" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="BookedOn" class="control-label"></label>
+                <input asp-for="BookedOn" class="form-control" />
+                <span asp-validation-for="BookedOn" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="BookedFor" class="control-label"></label>
+                <input asp-for="BookedFor" class="form-control" />
+                <span asp-validation-for="BookedFor" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <div class="checkbox">
+                    <label>
+                        <input asp-for="IsCanceled" /> @Html.DisplayNameFor(model => model.IsCanceled)
+                    </label>
+                </div>
+            </div>
+            <div class="form-group">
+                <label asp-for="CanceledOn" class="control-label"></label>
+                <input asp-for="CanceledOn" class="form-control" />
+                <span asp-validation-for="CanceledOn" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="BookedBy" class="control-label"></label>
+                <input asp-for="BookedBy" class="form-control" />
+                <span asp-validation-for="BookedBy" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="BookPilotMappingID" class="control-label"></label>
+                <input asp-for="BookPilotMappingID" class="form-control" />
+                <span asp-validation-for="BookPilotMappingID" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="StaffID" class="control-label"></label>
+                <input asp-for="StaffID" class="form-control" />
+                <span asp-validation-for="StaffID" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-default" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

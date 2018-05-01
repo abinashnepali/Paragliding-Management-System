@@ -1,0 +1,93 @@
+﻿@model IEnumerable<DataAccessLayer.Book>
+@using Paragliding_Management_System.Code
+@{
+    ViewData["Title"] = "Index";
+}
+<div class="top-buffer"></div>
+<div id="bookingDv" class="panel panel-primary">
+    <div class="panel-heading panel-head">Booking List</div>
+    <div class="panel-body">
+        <div class="btn-group">
+            <a id="createBooking" data-toggle="modal" data-target="#modal-action-Booking" class="btn btn-primary">
+                <i class="glyphicon glyphicon-plus"></i>  Add Booking
+            </a>
+        </div>
+        <div class="top-buffer"></div>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.BookID)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.BookedOn)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.BookedFor)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.IsCanceled)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.CanceledOn)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.BookedBy)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.BookPilotMappingID)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.StaffID)
+                    </th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.BookID)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.BookedOn)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.BookedFor)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.IsCanceled)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.CanceledOn)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.BookedBy)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.BookPilotMappingID)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.StaffID)
+                        </td>
+                        <td>
+                            <a id="editBooking" data-toggle="modal" asp-action="EditDepartment" asp-route-id="@item.StaffID" data-target="#modal-action-Booking"
+                               class="btn btn-info">
+                                <i class="glyphicon glyphicon-pencil"></i>  Edit
+                            </a>
+                            <a id="cancelBooking" data-toggle="modal" asp-action="DeleteDepartment" asp-route-id="@item.StaffID" data-target="#modal-action-Booking" class="btn btn-danger">
+                                <i class="glyphicon glyphicon-trash"></i>  Delete
+                            </a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+
+@Html.Partial("_Modal", new BootstrapModel { ID = "modal-action-Booking", AreaLabeledId = "modal-action-Booking-label", Size = ModalSize.Large })
+@section Scripts {
+    <script src="~/js/book.js"></script>
+}
