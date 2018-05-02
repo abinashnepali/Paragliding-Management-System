@@ -41,5 +41,27 @@ namespace DataAccessLayer.Operations
             }
             return lstPilot;
         }
+        public int ChkBookingStat(Book book)
+        {
+            using (SqlConnection con = new SqlConnection(Connection.connectionString))
+            {
+                SqlCommand cmd = new SqlCommand("Booking_CheckAvailability", con);
+                cmd.CommandType = CommandType.StoredProcedure;
+                con.Open();
+                cmd.Parameters.AddWithValue("@BookedFor", book.BookedFor);
+                cmd.Parameters.AddWithValue("@StaffID", book.StaffID);
+
+                SqlParameter outPutParameter = new SqlParameter();
+                outPutParameter.ParameterName = "@status";
+                outPutParameter.SqlDbType = SqlDbType.Int;
+                outPutParameter.Direction = ParameterDirection.Output;
+                cmd.Parameters.Add(outPutParameter);
+                con.Open();
+                cmd.ExecuteNonQuery();
+                con.Close();
+                return int.Parse(outPutParameter.Value.ToString());
+            }
+        }
+
     }
 }
