@@ -63,3 +63,22 @@
         font-size: 2em;
         vertical-align: middle;
     }
+
+.cartItem {
+    font-size: 12px;
+    line-height: 1.1em;
+    background: #D8000C;
+    padding: 2px;
+    border: 2px solid #fff;
+    border-radius: 50%;
+    position: absolute;
+    top: 3px;
+    left: 55px;
+    color: #fff;
+    min-width: 22px;
+    min-height: 22px;
+    font-weight: 700;
+    text-align: center;
+    letter-spacing: -1px;
+    text-indent: -1px;
+}

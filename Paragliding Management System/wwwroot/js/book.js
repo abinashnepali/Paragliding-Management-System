@@ -1,7 +1,7 @@
 ﻿(function ($) {
     function Book() {
         var $this = this;  
-        var $bookingDv = $('#bookingDv');
+        var $bookingDv = $('#bookingDv'); 
         var config = {
             isPostBack: false,
             async: false,
@@ -55,17 +55,46 @@
                     console.log(e.message);
                 }
             });
-        };
-        function AddBookingSuccess(data) {
-            try {
-                $bookingDv.next('.modal').find('.modal-content').html(data);
-            } catch (e) {
-                console.log(e.message);
-            }
-        };
-        function AddBookingFailure(error) {
-            console.log(error);
-        };
+            $('.container').off().on('click', '#btnBook', function () {
+                var bookedFor = $('#BookedFor').val();
+                var bookedBy = $('#BookedBy').val();
+                var staffID = $('#StaffID').val();
+                //saveBooking(0, bookedFor, bookedBy, staffID)
+            });
+            function saveBooking(BookID, BookedFor, BookedBy, StaffID) {
+                var form = $('#frmBook');
+                var validator = form.validate(),
+                    serialized = form.serializeArray(),
+                    data = {};
+                if (!validator.valid()) { return; }
+                // turn the array of form properties into a regular JavaScript object
+                for (var i = 0; i < serialized.length; i++) {
+                    data[serialized[i].name] = serialized[i].value;
+                }
+                config.method = "api/Book/Save";
+                config.data = JSON.stringify({
+                    BookID: BookID,
+                    BookedFor: BookedFor,
+                    BookedBy: BookedBy,
+                    StaffID: StaffID
+                });
+                config.successMethod = saveBookingSuccess;
+                config.errorMethod = function (error) {
+                    ajaxFailure(error, validator);
+                };
+                ajaxCall(config);
+            };
+            function AddBookingSuccess(data) {
+                try {
+                    $bookingDv.next('.modal').find('.modal-content').html(data);
+                } catch (e) {
+                    console.log(e.message);
+                }
+            };
+            function AddBookingFailure(error) {
+                console.log(error);
+            };
+        };        
         function initilizeModel() {
             $("#modal-action-Employee").on('loaded.bs.modal', function (e) {
 
