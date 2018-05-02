@@ -58,7 +58,7 @@
         };
         function AddBookingSuccess(data) {
             try {
-                $bookingDv.html(data);
+                $bookingDv.next('.modal').find('.modal-content').html(data);
             } catch (e) {
                 console.log(e.message);
             }
