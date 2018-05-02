@@ -3,10 +3,6 @@
     padding-bottom: 20px;
 }
 
-.btn-space {
-    margin-right: 5px;
-}
-
 /* Wrapping element */
 /* Set some basic padding to keep content from hitting the edges */
 .body-content {
@@ -36,4 +32,53 @@
     .carousel-caption {
         display: none;
     }
+}
+.isa_info, .isa_success, .isa_warning, .isa_error {
+    margin: 10px 0px;
+    padding: 12px;
+}
+
+.isa_info, .lblInfo {
+    color: #00529B;
+    background-color: #BDE5F8;
+}
+
+.isa_success, .lblSuccess {
+    color: #4F8A10;
+    background-color: #DFF2BF;
+}
+
+.isa_warning, .lblWarning {
+    color: #9F6000;
+    background-color: #FEEFB3;
+}
+
+.isa_error, .lblError {
+    color: #D8000C;
+    background-color: #FFD2D2;
+}
+
+    .isa_info i, .isa_success i, .isa_warning i, .isa_error i {
+        margin: 10px 22px;
+        font-size: 2em;
+        vertical-align: middle;
+    }
+
+.cartItem {
+    font-size: 12px;
+    line-height: 1.1em;
+    background: #D8000C;
+    padding: 2px;
+    border: 2px solid #fff;
+    border-radius: 50%;
+    position: absolute;
+    top: 3px;
+    left: 55px;
+    color: #fff;
+    min-width: 22px;
+    min-height: 22px;
+    font-weight: 700;
+    text-align: center;
+    letter-spacing: -1px;
+    text-indent: -1px;
 }

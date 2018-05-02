@@ -36,6 +36,7 @@
                     <li><a asp-area="" asp-controller="Home" asp-action="Index">Home</a></li>
                     <li><a asp-area="" asp-controller="Home" asp-action="About">About</a></li>
                     <li><a asp-area="" asp-controller="Home" asp-action="Contact">Contact</a></li>
+                    <li><a href="javascript:void(0)"><span class="label cartItem" ></span><span class="glyphicon glyphicon-shopping-cart"></span>Cart</a></li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
                     @if (TempData["Name"] != null)
@@ -73,6 +74,10 @@
         </div>
     </nav>
     <div class="container body-content">
+        <div id="messageSection" style="display:none;">
+            <i class="fa fa-info-circle"></i>
+            <label id="mgdLabel"></label>
+        </div>
         @RenderBody()
         <hr />
         <footer>

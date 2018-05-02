@@ -1,11 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using Microsoft.AspNetCore.Mvc;
+using System;
+using System.ComponentModel.DataAnnotations;
 
 namespace DataAccessLayer
 {
     public class Book
     {
+        [HiddenInput]
         public int BookID { get; set; }
+        [Required]
         public DateTime BookedOn { get; set; }
         public DateTime BookedFor { get; set; }
         public bool IsCanceled { get; set; }

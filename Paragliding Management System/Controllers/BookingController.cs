@@ -28,7 +28,8 @@ namespace Paragliding_Management_System.Controllers.Api
         [HttpGet]
         public PartialViewResult AddBooking()
         {
-            return PartialView("_AddBooking");
+            Book bookModel = new Book();
+            return PartialView("_AddBooking", bookModel);
         }
 
         public PartialViewResult EditBooking(int? id)

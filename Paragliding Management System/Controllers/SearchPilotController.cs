@@ -19,5 +19,12 @@ namespace Paragliding_Management_System.Controllers
             offSet = offSet == null ? 0 : offSet;
             return dbObj.Index(offSet, date);
         }
+
+        [HttpPost]
+        [Route("api/pilot/chkbookingstat")]
+        public int ChkBookingStat([FromBody]Book book)
+        {            
+            return dbObj.ChkBookingStat(book);
+        }
     }
 }
