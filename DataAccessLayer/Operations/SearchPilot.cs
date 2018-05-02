@@ -9,36 +9,38 @@ namespace DataAccessLayer.Operations
     {
         public IEnumerable<Staff> Index(int? offSet, DateTime date)
         {
-            List<Staff> lstPilot = new List<Staff>();
-
-            using (SqlConnection con = new SqlConnection(Connection.connectionString))
+            try
             {
-                SqlCommand cmd = new SqlCommand("SearchPilot", con);
-                cmd.CommandType = CommandType.StoredProcedure;
-                cmd.Parameters.AddWithValue("@dateTime", date);
-                cmd.Parameters.AddWithValue("@offSet", offSet);
-
-                con.Open();
-                SqlDataReader rdr = cmd.ExecuteReader();
-
-                while (rdr.Read())
+                List<Staff> lstPilot = new List<Staff>();
+                using (SqlConnection con = new SqlConnection(Connection.connectionString))
                 {
-                    Staff staff = new Staff();
-
-                    staff.StaffID = Convert.ToInt32(rdr["StaffID"]);
-                    staff.FirstName = rdr["FirstName"].ToString();
-                    staff.LastName = rdr["LastName"].ToString();
-                    staff.Address = rdr["Address"].ToString();
-                    staff.Phone = rdr["Phone"].ToString();
-                    staff.Email = rdr["Email"].ToString();
-                    staff.Designation = rdr["Designation"].ToString();
-                    staff.HireDate = Convert.ToDateTime(rdr["HireDate"]);
-
-                    lstPilot.Add(staff);
+                    SqlCommand cmd = new SqlCommand("SearchPilot", con);
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@dateTime", date);
+                    cmd.Parameters.AddWithValue("@offSet", offSet);
+                    con.Open();
+                    SqlDataReader rdr = cmd.ExecuteReader();
+                    while (rdr.Read())
+                    {
+                        Staff staff = new Staff();
+                        staff.StaffID = Convert.ToInt32(rdr["StaffID"]);
+                        staff.FirstName = rdr["FirstName"].ToString();
+                        staff.LastName = rdr["LastName"].ToString();
+                        staff.Address = rdr["Address"].ToString();
+                        staff.Phone = rdr["Phone"].ToString();
+                        staff.Email = rdr["Email"].ToString();
+                        staff.Designation = rdr["Designation"].ToString();
+                        staff.HireDate = Convert.ToDateTime(rdr["HireDate"]);
+                        lstPilot.Add(staff);
+                    }
+                    con.Close();
                 }
-                con.Close();
+                return lstPilot;
             }
-            return lstPilot;
+            catch (Exception ex)
+            {
+                throw;
+            }
         }
         public int ChkBookingStat(Book book)
         {
@@ -48,7 +50,6 @@ namespace DataAccessLayer.Operations
                 {
                     SqlCommand cmd = new SqlCommand("Booking_CheckAvailability", con);
                     cmd.CommandType = CommandType.StoredProcedure;
-                    con.Open();
                     cmd.Parameters.AddWithValue("@BookedFor", book.BookedFor);
                     cmd.Parameters.AddWithValue("@StaffID", book.StaffID);
 
