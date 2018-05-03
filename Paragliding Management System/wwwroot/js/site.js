@@ -4,6 +4,8 @@
         var $cartItem = $('.container').find('.cartItem');
         var $cartArr = [];
         var $arrVar = [];
+        var $bukDiv = $('#bookingDv');
+        var $pilotList = $('#pilotList');
         function loadDatePicker() {
             $("#datepicker").datepicker({
                 minDate: 0,
@@ -40,7 +42,7 @@
             });
         };
         function pilotBooking() {
-            $('#pilotList').on('click', '.cart-pilot', function () {
+            $pilotList.on('click', '.cart-pilot', function () {
                 var $this = $(this);
                 var $staffID = $this.attr('data-staffid');
                 if (typeof (Storage) !== "undefined") {
@@ -56,11 +58,10 @@
                     messageDisplay("Sorry, your browser does not support web storage...", "error");
                 }
                 $this.attr('disabled', true);
-                //checkPilot($('#datepicker').val(), $staffID);
             });
-            $('#pilotList').on('click', '.hide-pilot', function () {
+            $pilotList.on('click', '.hide-pilot', function () {
                 $(this).parent().parent().remove();
-            });
+            });           
             function checkPilot(BookedFor, StaffID) {
                 $.ajax({
                     type: "POST",
@@ -118,17 +119,7 @@
                     ajaxFailure(error, validator);
                 };
                 ajaxCall(config);
-            };
-            function checkIfArrayIsUnique(arr) {
-                var map = {}, i = 0, size = arr.length;
-                for (i; i < size; i++) {
-                    if (map[arr[i]]) {
-                        return false;
-                    }
-                    map[arr[i]] = true;
-                }
-                return true;
-            }
+            };          
             function messageDisplay(message, msgType) {
                 msgType = msgType.toLowerCase();
                 if (msgType === 'info') {
@@ -165,7 +156,7 @@
         $this.init = function () {
             loadDatePicker();
             pilotBooking();
-            clearStorage()
+            clearStorage();            
         };
     }
     $(function () {
