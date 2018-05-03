@@ -3,6 +3,7 @@
         var $this = this;
         var $cartItem = $('.container').find('.cartItem');
         var $cartArr = [];
+        var $arrVar = [];
         function loadDatePicker() {
             $("#datepicker").datepicker({
                 minDate: 0,
@@ -40,8 +41,21 @@
         };
         function pilotBooking() {
             $('#pilotList').on('click', '.cart-pilot', function () {
-                var $staffID = $(this).attr('data-staffid');
-                checkPilot($('#datepicker').val(), $staffID);
+                var $this = $(this);
+                var $staffID = $this.attr('data-staffid');
+                if (typeof (Storage) !== "undefined") {
+                    if (localStorage.clickcount) {
+                        localStorage.clickcount = Number(localStorage.clickcount) + 1;
+                    } else {
+                        localStorage.clickcount = 1;
+                    }
+                    $cartItem.text(localStorage.clickcount);
+                    $cartArr.push({ "BookedFor": $('#datepicker').val(), "StaffID": $staffID });
+                } else {
+                    messageDisplay("Sorry, your browser does not support web storage...", "error");
+                }
+                $this.attr('disabled', true);
+                //checkPilot($('#datepicker').val(), $staffID);
             });
             $('#pilotList').on('click', '.hide-pilot', function () {
                 $(this).parent().parent().remove();
@@ -66,7 +80,7 @@
                                     localStorage.clickcount = 1;
                                 }
                                 $cartItem.text(localStorage.clickcount);
-                                $cartArr.push({"BookedFor": BookedFor, "StaffID": StaffID});                                
+                                $cartArr.push({ "BookedFor": BookedFor, "StaffID": StaffID });
                             } else {
                                 messageDisplay("Sorry, your browser does not support web storage...", "error");
                             }
@@ -104,6 +118,16 @@
                 };
                 ajaxCall(config);
             };
+            function checkIfArrayIsUnique(arr) {
+                var map = {}, i = 0, size = arr.length;
+                for (i; i < size; i++) {
+                    if (map[arr[i]]) {
+                        return false;
+                    }
+                    map[arr[i]] = true;
+                }
+                return true;
+            }
             function messageDisplay(message, msgType) {
                 msgType = msgType.toLowerCase();
                 if (msgType === 'info') {
@@ -132,9 +156,15 @@
                 $("#mgdLabel").text(message);
             };
         };
+        function clearStorage() {
+            if (typeof (Storage) !== "undefined") {
+                localStorage.clear();
+            }
+        };
         $this.init = function () {
             loadDatePicker();
             pilotBooking();
+            clearStorage()
         };
     }
     $(function () {
