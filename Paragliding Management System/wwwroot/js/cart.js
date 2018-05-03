@@ -1,26 +1,45 @@
 ﻿(function ($) {
     function Cart() {
-        var $this = this; 
+        var $this = this;
         var $bukDiv = $('#bookingDv');
         var $bukDivTable = $('#bookingDv').find('#cartBody');
-        function loadCart() {           
-            if (typeof (Storage) !== "undefined") {             
+        var $cartArr = '';
+        function loadCart() {
+            if (typeof (Storage) !== "undefined") {
                 if (localStorage.cartVar) {
-                    var $cartArr = JSON.parse(localStorage.cartVar);   
+                    $cartArr = JSON.parse(localStorage.cartVar);
                     var html = '', i = 0, len = $cartArr.length;
                     for (i; i < len; i++) {
-                        html += '<tr><td>' + $cartArr[i].BookedFor +'</td><td><a class="btn btn-danger remCart" href="javascript:void(0)"><i class="glyphicon glyphicon-trash"></i>Remove From Cart</a></td></tr>';
-                    }    
+                        html += '<tr id="tr' + $cartArr[i].StaffID +'"><td>' + $cartArr[i].StaffName + '</td><td>' + $cartArr[i].BookedFor + '</td><td><a class="btn btn-danger" id="remCart" href="javascript:void(0)" data-stafid=' + $cartArr[i].StaffID + '><i class="glyphicon glyphicon-trash"></i>Remove From Cart</a></td></tr>';
+                    }
                     $bukDivTable.html(html);
-                }               
+                }
             } else {
                 messageDisplay("Sorry, your browser does not support web storage...", "error");
             }
-        };     
+        };
         function other() {
             $bukDiv.on('click', '#createBooking', function () {
-
-            });          
+                if (localStorage.cartVar !== '[]') {
+                    var BookedFor = $cartArr[i].BookedFor;
+                    var BookedBy = $cartArr[i].BookedBy;
+                    var StaffID = $cartArr[i].StaffID;
+                    saveBooking(0, BookedFor, BookedBy, StaffID);
+                } else {
+                    messageDisplay('Cart Is Empty', 'error');
+                }
+            });
+            $bukDiv.on('click', '#remCart', function () {
+                var staffID = $(this).attr('data-stafid');
+                var result = $cartArr.filter(function (staff) {
+                    if (staff.StaffID == staffID) {
+                        return false;
+                    }
+                    return true;
+                });
+                $bukDivTable.find('#tr' + staffID).remove();
+                localStorage.cartVar = JSON.stringify(result);
+            });
             function saveBooking(BookID, BookedFor, BookedBy, StaffID) {
                 var form = $('#frmBook');
                 var validator = form.validate(),
@@ -72,7 +91,7 @@
                 $("#mgdLabel").text(message);
             };
         };
-        $this.init = function () {           
+        $this.init = function () {
             loadCart();
             other();
         };

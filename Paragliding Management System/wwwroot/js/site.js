@@ -29,7 +29,7 @@
                                 htmlDom += v.firstName + ' ' + v.lastName;
                                 htmlDom += "</td>";
                                 htmlDom += "<td>";
-                                htmlDom += "<button type='button' class='btn btn-success cart-pilot btn-space' data-staffid='" + v.staffID + "'>Hire</button>";
+                                htmlDom += "<button type='button' class='btn btn-success cart-pilot btn-space' data-staffid='" + v.staffID + "' data-staffName='" + v.firstName + ' ' + v.lastName +  "'>Hire</button>";
                                 htmlDom += "<button type='button' class='btn btn-warning hide-pilot btn-space'>Hide</button>";
                                 htmlDom += "</td>";
                                 htmlDom += "</tr>";
@@ -44,7 +44,6 @@
         function pilotBooking() {
             $pilotList.on('click', '.cart-pilot', function () {
                 var $this = $(this);
-                var $staffID = $this.attr('data-staffid');
                 if (typeof (Storage) !== "undefined") {
                     if (localStorage.clickcount) {
                         localStorage.clickcount = Number(localStorage.clickcount) + 1;
@@ -52,7 +51,7 @@
                         localStorage.clickcount = 1;
                     }
                     $cartItem.text(localStorage.clickcount);
-                    $cartArr.push({ "BookedFor": $('#datepicker').val(), "StaffID": $staffID });
+                    $cartArr.push({ "BookedFor": $('#datepicker').val(), "StaffID": $this.attr('data-staffid'), "StaffName": $this.attr('data-staffname') });
                     localStorage.cartVar = JSON.stringify($cartArr);
                 } else {
                     messageDisplay("Sorry, your browser does not support web storage...", "error");
