@@ -1,0 +1,28 @@
+﻿<div class="top-buffer"></div>
+<div id="bookingDv" class="panel panel-primary">
+    <div class="panel-heading panel-head">Booking List</div>
+    <div class="panel-body">
+        <div class="btn-group pull-right">
+            <a id="createBooking" data-toggle="modal" class="btn btn-primary">
+                <i class="glyphicon glyphicon-plus"></i>Book</a>
+        </div>
+        <div class="top-buffer"></div>
+        <table class="table table-bordered table-striped table-condensed">
+            <thead>
+                <tr>                    
+                    <th>
+                        Booked For
+                    </th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody id="cartBody">
+            
+            </tbody>
+        </table>
+    </div>
+</div>
+@section Scripts
+    {
+    <script src="~/js/cart.js" asp-append-version="true"></script>
+}

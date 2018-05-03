@@ -3,6 +3,9 @@
         var $this = this;
         var $cartItem = $('.container').find('.cartItem');
         var $cartArr = [];
+        var $arrVar = [];
+        var $bukDiv = $('#bookingDv');
+        var $pilotList = $('#pilotList');
         function loadDatePicker() {
             $("#datepicker").datepicker({
                 minDate: 0,
@@ -39,13 +42,26 @@
             });
         };
         function pilotBooking() {
-            $('#pilotList').on('click', '.cart-pilot', function () {
-                var $staffID = $(this).attr('data-staffid');
-                checkPilot($('#datepicker').val(), $staffID);
+            $pilotList.on('click', '.cart-pilot', function () {
+                var $this = $(this);
+                var $staffID = $this.attr('data-staffid');
+                if (typeof (Storage) !== "undefined") {
+                    if (localStorage.clickcount) {
+                        localStorage.clickcount = Number(localStorage.clickcount) + 1;
+                    } else {
+                        localStorage.clickcount = 1;
+                    }
+                    $cartItem.text(localStorage.clickcount);
+                    $cartArr.push({ "BookedFor": $('#datepicker').val(), "StaffID": $staffID });
+                    localStorage.cartVar = JSON.stringify($cartArr);
+                } else {
+                    messageDisplay("Sorry, your browser does not support web storage...", "error");
+                }
+                $this.attr('disabled', true);
             });
-            $('#pilotList').on('click', '.hide-pilot', function () {
+            $pilotList.on('click', '.hide-pilot', function () {
                 $(this).parent().parent().remove();
-            });
+            });           
             function checkPilot(BookedFor, StaffID) {
                 $.ajax({
                     type: "POST",
@@ -66,7 +82,7 @@
                                     localStorage.clickcount = 1;
                                 }
                                 $cartItem.text(localStorage.clickcount);
-                                $cartArr.push({"BookedFor": BookedFor, "StaffID": StaffID});                                
+                                $cartArr.push({ "BookedFor": BookedFor, "StaffID": StaffID });
                             } else {
                                 messageDisplay("Sorry, your browser does not support web storage...", "error");
                             }
@@ -103,7 +119,7 @@
                     ajaxFailure(error, validator);
                 };
                 ajaxCall(config);
-            };
+            };          
             function messageDisplay(message, msgType) {
                 msgType = msgType.toLowerCase();
                 if (msgType === 'info') {
@@ -132,9 +148,15 @@
                 $("#mgdLabel").text(message);
             };
         };
+        function clearStorage() {
+            if (typeof (Storage) !== "undefined") {
+                localStorage.clickcount = 0;
+            }
+        };
         $this.init = function () {
             loadDatePicker();
             pilotBooking();
+            clearStorage();            
         };
     }
     $(function () {
