@@ -51,6 +51,7 @@
                     }
                     $cartItem.text(localStorage.clickcount);
                     $cartArr.push({ "BookedFor": $('#datepicker').val(), "StaffID": $staffID });
+                    localStorage.cartVar = JSON.stringify($cartArr);
                 } else {
                     messageDisplay("Sorry, your browser does not support web storage...", "error");
                 }
@@ -158,7 +159,7 @@
         };
         function clearStorage() {
             if (typeof (Storage) !== "undefined") {
-                localStorage.clear();
+                localStorage.clickcount = 0;
             }
         };
         $this.init = function () {
