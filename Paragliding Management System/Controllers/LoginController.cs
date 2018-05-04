@@ -14,13 +14,15 @@ namespace Paragliding_Management_System.Controllers
     {
         Logindbl dbObj = new Logindbl();
         [HttpGet]
-        public IActionResult Index()
+        public IActionResult Index(string returnUrl = null)
         {
+            ViewBag.ReturnUrl = returnUrl;
             return View();
         }
         [HttpPost]
-        public IActionResult Index(string email, string password)
+        public IActionResult Index(string email, string password, string returnUrl = null)
         {
+            ViewBag.ReturnUrl = returnUrl;
             if (ModelState.IsValid)
             {
                 if (dbObj.ValidateUser(email, password))
@@ -32,20 +34,23 @@ namespace Paragliding_Management_System.Controllers
                     //HttpContext.Session.SetString("firstName", user.FirstName);
                     //HttpContext.Session.SetString("lastName", user.LastName);
                     //HttpContext.Session.SetString("email", user.Email);
-                    //HttpContext.Session.SetString("role", role);
-                    return RedirectToAction("Index", "Home");
-
+                    //HttpContext.Session.SetString("role", role);                  
+                    return Redirect(GetRedirectUrl(returnUrl));
                 }
-                else
-                {
-                    ViewData["Message"] = "Username or password is invalid.";
-                    return View();
-                }
-            }
-            else
-            {
+                ViewData["Message"] = "Username or password is invalid.";
                 return View();
             }
+            // user authN failed
+            return View();
+        }
+
+        private string GetRedirectUrl(string returnUrl)
+        {
+            if (string.IsNullOrEmpty(returnUrl) || !Url.IsLocalUrl(returnUrl))
+            {
+                return Url.Action("Index", "Home");
+            }
+            return returnUrl;
         }
     }
 }

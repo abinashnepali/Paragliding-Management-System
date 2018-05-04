@@ -10,6 +10,22 @@ namespace Paragliding_Management_System.Controllers
     {
         public IActionResult Index()
         {
+            if (TempData["Name"] != null)
+            {
+                ViewBag.UName = TempData["Name"].ToString();
+            }
+            else
+            {
+                ViewBag.UName = null;
+            }
+            if (TempData["UserID"] != null)
+            {
+                ViewBag.UID = TempData["UserID"].ToString();
+            }
+            else
+            {
+                ViewBag.UID = null;
+            }
             return View();
         }
     }

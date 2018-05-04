@@ -20,11 +20,21 @@
         };
         function other() {
             $bukDiv.on('click', '#createBooking', function () {
+                var currentUrl = window.location.pathname;
+                var redirectUrl = $("#RedirectTo").val() + '?ReturnUrl=' + currentUrl;
+                console.log(currentUrl);
+                console.log(redirectUrl);
                 if (localStorage.cartVar !== '[]') {
-                    var BookedFor = $cartArr[i].BookedFor;
-                    var BookedBy = $cartArr[i].BookedBy;
-                    var StaffID = $cartArr[i].StaffID;
-                    saveBooking(0, BookedFor, BookedBy, StaffID);
+                    var i = 0, len = $cartArr.length, BookedFor = '', BookedBy = '', StaffID = '';
+                    for (i; i < len; i++) {
+                        BookedFor += $cartArr[i].BookedFor;                      
+                        StaffID += $cartArr[i].StaffID;
+                    }    
+                    console.log(currentUrl + redirectUrl);
+                    if (userIDTemp === "") {
+                        window.location.href = redirectUrl;
+                    }  
+                    //saveBooking(0, BookedFor, userIDTemp, StaffID);
                 } else {
                     messageDisplay('Cart Is Empty', 'error');
                 }
