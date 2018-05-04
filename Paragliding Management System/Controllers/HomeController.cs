@@ -17,19 +17,23 @@ namespace Paragliding_Management_System.Controllers
         private JObject UserEmail { get; set; }
         public IActionResult Index()
         {
-            string sessionVar = HttpContext.Session.GetString("UserDet"), name = string.Empty, role = string.Empty;
+            string sessionVar = HttpContext.Session.GetString("UserDet"), name = string.Empty, role = string.Empty, userID = string.Empty;
             if (sessionVar != null)
             {
                 name = JsonConvert.DeserializeObject(sessionVar).ToString();
                 UserEmail = JObject.Parse(name);
                 name = (string)UserEmail["Email"];
                 role = (string)UserEmail["RoleType"];
+                userID = (string)UserEmail["UserID"];
                 TempData["Name"] = name;
+                TempData["UserID"] = userID;                
                 TempData["RoleID"] = role;
+                TempData.Keep();
             }
             else
             {
                 TempData["Name"] = null;
+                TempData["UserID"] = null;
                 TempData["RoleID"] = null;
             }
             return View();

@@ -36,38 +36,31 @@
                     <li><a asp-area="" asp-controller="Home" asp-action="Index">Home</a></li>
                     <li><a asp-area="" asp-controller="Home" asp-action="About">About</a></li>
                     <li><a asp-area="" asp-controller="Home" asp-action="Contact">Contact</a></li>
-                    <li><a asp-area="" asp-controller="Cart" asp-action="Index"><span class="label cartItem" ></span><span class="glyphicon glyphicon-shopping-cart"></span>Cart</a></li>
+                    <li><a asp-area="" asp-controller="Cart" asp-action="Index"><span class="label cartItem"></span><span class="glyphicon glyphicon-shopping-cart"></span>Cart</a></li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
-                    @if (TempData["Name"] != null)
+                    @if (User.Identity.IsAuthenticated)
                     {
-                        TempData.Keep("Name");
-                        if (TempData["RoleID"] != null)
+                        if (User.IsInRole("Superuser"))
                         {
-                            var roleId = TempData["RoleID"].ToString();
-                            TempData.Keep("RoleID");
-                            if (roleId == "1")
-                            {
-                                //Superuser
-                            }
-                            if (roleId == "1" || roleId == "2")
-                            {
-                                // Staff
-                                <li><a asp-area="" asp-controller="User" asp-action="Index">User</a></li>
-                                <li><a asp-area="" asp-controller="Staff" asp-action="Index">Staff</a></li>
-                            }
-                            if (roleId == "1" || roleId == "2" || roleId == "3")
-                            {
-                                //client
-                                <li><a asp-area="" asp-controller="User" asp-action="Edit"><span class="glyphicon glyphicon-user"></span> @TempData["Name"].ToString()</a></li>
-                                <li><a asp-area="" asp-controller="Logout" asp-action=""><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
-                            }
+                            //Superuser
+                        }
+                        if (User.IsInRole("Superuser") || User.IsInRole("Staff"))
+                        {
+                            // Staff
+                            <li><a asp-area="" asp-controller="User" asp-action="Index">User</a></li>
+                            <li><a asp-area="" asp-controller="Staff" asp-action="Index">Staff</a></li>
+                        }
+                        if (User.IsInRole("Superuser") || User.IsInRole("Staff") || User.IsInRole("Client"))
+                        {
+                            //client
+                            <li><a asp-area="" asp-controller="User" asp-action="Edit"><span class="glyphicon glyphicon-user"></span> @User.Identity.Name</a></li>
+                            <li><a asp-area="" asp-controller="Logout" asp-action=""><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
                         }
                     }
                     else
                     {
-                        <li><a asp-area="" asp-controller="Register" asp-action=""><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
-                        <li><a asp-area="" asp-controller="Login" asp-action=""><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+                        @await Html.PartialAsync("_LoginPartial")
                     }
                 </ul>
             </div>

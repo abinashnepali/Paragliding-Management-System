@@ -4,7 +4,8 @@
     <div class="panel-body">
         <div class="btn-group pull-right">
             <a id="createBooking" data-toggle="modal" class="btn btn-primary">
-                <i class="glyphicon glyphicon-plus"></i>Book</a>
+                <i class="glyphicon glyphicon-plus"></i>Book
+            </a>
         </div>
         <div class="top-buffer"></div>
         <table class="table table-bordered table-striped table-condensed">
@@ -15,13 +16,16 @@
                     <th>Action</th>
                 </tr>
             </thead>
-            <tbody id="cartBody">
-            
-            </tbody>
+            <tbody id="cartBody"></tbody>
         </table>
     </div>
 </div>
+@Html.Hidden("RedirectTo", Url.Action("Index", "Login"))
 @section Scripts
     {
+    <script>
+    var userIDTemp = '@(ViewBag.UID)';
+    var userNameTemp = '@(ViewBag.UName)';
+    </script>
     <script src="~/js/cart.js" asp-append-version="true"></script>
 }
