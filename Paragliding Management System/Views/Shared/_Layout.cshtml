@@ -54,14 +54,11 @@
                         if (User.IsInRole("Superuser") || User.IsInRole("Staff") || User.IsInRole("Client"))
                         {
                             //client
-                            <li><a asp-area="" asp-controller="User" asp-action="Edit"><span class="glyphicon glyphicon-user"></span> @User.Identity.Name</a></li>
-                            <li><a asp-area="" asp-controller="Logout" asp-action=""><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
+                            @*<li><a asp-area="" asp-controller="User" asp-action="Edit"><span class="glyphicon glyphicon-user"></span> @User.Identity.Name</a></li>
+                            <li><a asp-area="" asp-controller="Account" asp-action="Logout"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>*@
                         }
                     }
-                    else
-                    {
                         @await Html.PartialAsync("_LoginPartial")
-                    }
                 </ul>
             </div>
         </div>

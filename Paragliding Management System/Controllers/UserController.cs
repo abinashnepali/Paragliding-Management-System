@@ -3,52 +3,68 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using DataAccessLayer;
+using DataAccessLayer.Models;
 using DataAccessLayer.Operations;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Paragliding_Management_System.AccountViewModels;
+using Paragliding_Management_System.Identity;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Design;
 
 namespace Paragliding_Management_System.Controllers
 {
+    [Authorize]
     public class UserController : Controller
     {
-        UserDbl dalObj = new UserDbl();
+        private readonly UserDbl dalObj;
+        private readonly UsersDbContext _dbcontext;
+        public UserController(UsersDbContext _dbcontext, UserDbl dalObj)
+        {
+            this._dbcontext = _dbcontext;
+            this.dalObj = dalObj;
+        }
+
         public IActionResult Index()
         {
-            if (string.IsNullOrEmpty(HttpContext.Session.GetString("UserDet")))
-            {
-                return RedirectToAction("Index", "Home");
-            }
             return View(dalObj.GetAllUsers());
         }
 
         [HttpGet]
-        public IActionResult Edit(int? id)
+        public IActionResult Edit(string id)
         {
-            if (id==null)
-            {
-                id = Convert.ToInt32(HttpContext.Session.GetString("id"));
-            }
-            Users user = dalObj.GetUserByID(id);
+            UserViewModel model = new UserViewModel();
+            AppUser user = _dbcontext.AppUser.Where(x => x.Id == id).SingleOrDefault();
             if (user == null)
             {
                 return NotFound();
             }
-            return View(user);
+            model.Id = user.Id;
+            model.UserName = user.UserName;
+            model.FirstName = user.FirstName;
+            model.LastName = user.LastName;
+            model.Email = user.Email;
+            model.Phone = user.PhoneNumber;
+            return View(model);
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Edit(int id, [Bind]Users user)
+        public IActionResult Edit([FromBody]UserViewModel model)
         {
-            if (id != user.UserID)
-            {
-                id = Convert.ToInt32(HttpContext.Session.GetString("id"));
-            }
+            AppUser user = new AppUser();
             if (ModelState.IsValid)
             {
-                dalObj.AddUpdateUser(user);
+                user.UserName = model.UserName;
+                user.FirstName = model.FirstName;
+                user.LastName = model.LastName;
+                user.Email = model.Email;
+                user.PhoneNumber = model.Phone;
+                AppUser exist = _dbcontext.Set<AppUser>().Find(model.Id);
+                _dbcontext.Entry(exist).CurrentValues.SetValues(user);
                 return RedirectToAction("Index");
             }
-            return View(user);
+            return View(model);
         }
 
         [HttpGet]

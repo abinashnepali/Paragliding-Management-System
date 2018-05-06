@@ -6,12 +6,14 @@ using System.Net.Http.Headers;
 using System.Threading.Tasks;
 using DataAccessLayer;
 using DataAccessLayer.Operations;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Paragliding_Management_System.Controllers
 {
+    [Authorize]
     public class StaffController : Controller
     {
         private readonly IHostingEnvironment hostingEnvironment;
@@ -24,11 +26,6 @@ namespace Paragliding_Management_System.Controllers
 
         public IActionResult Index()
         {
-            string firstName = HttpContext.Session.GetString("UserDet");
-            if (String.IsNullOrEmpty(firstName))
-            {
-                return RedirectToAction("Index", "Login");
-            }
             return View(objDal.GetAllStaff());
         }
 
