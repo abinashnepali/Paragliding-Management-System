@@ -50,8 +50,8 @@ namespace DataAccessLayer.Operations
                 {
                     SqlCommand cmd = new SqlCommand("Booking_CheckAvailability", con);
                     cmd.CommandType = CommandType.StoredProcedure;
-                    cmd.Parameters.AddWithValue("@BookedFor", book.BookedFor);
-                    cmd.Parameters.AddWithValue("@StaffID", book.StaffID);
+                    cmd.Parameters.AddWithValue("@BookedFor", book.BookedFors);
+                    cmd.Parameters.AddWithValue("@StaffID", book.StaffIDs);
 
                     SqlParameter outPutParameter = new SqlParameter();
                     outPutParameter.ParameterName = "@status";

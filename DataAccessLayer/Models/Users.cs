@@ -1,5 +1,4 @@
-﻿using Newtonsoft.Json;
-using System;
+﻿using System;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 
@@ -7,7 +6,7 @@ namespace DataAccessLayer
 {
     public class Users
     {               
-        public int UserID { get; set; }  
+        public string Id { get; set; }  
         
         [Required(ErrorMessage = "First Name Is Required")]
         [DisplayName("First Name")]

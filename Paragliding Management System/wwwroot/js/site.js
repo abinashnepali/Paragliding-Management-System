@@ -35,6 +35,7 @@
                                 htmlDom += "</tr>";
                             });
                             $('#staffList').html(htmlDom);
+                            localStorage.BookedFor = $(this).val();
                         }).fail(function () {
                             console.log("something went wrong.");
                         });
@@ -51,7 +52,7 @@
                         localStorage.clickcount = 1;
                     }
                     $cartItem.text(localStorage.clickcount);
-                    $cartArr.push({ "BookedFor": $('#datepicker').val(), "StaffID": $this.attr('data-staffid'), "StaffName": $this.attr('data-staffname') });
+                    $cartArr.push({ "StaffID": $this.attr('data-staffid'), "StaffName": $this.attr('data-staffname') });
                     localStorage.cartVar = JSON.stringify($cartArr);
                 } else {
                     messageDisplay("Sorry, your browser does not support web storage...", "error");

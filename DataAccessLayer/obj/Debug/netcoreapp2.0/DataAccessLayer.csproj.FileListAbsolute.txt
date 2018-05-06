@@ -9,3 +9,25 @@ C:\Users\Avinash\Documents\Paragliding Management System\Paragliding Management 
 C:\Users\Avinash\Documents\Paragliding Management System\Paragliding Management System\DataAccessLayer\obj\Debug\netcoreapp2.0\DataAccessLayer.AssemblyInfo.cs
 C:\Users\Avinash\Documents\Paragliding Management System\Paragliding Management System\DataAccessLayer\obj\Debug\netcoreapp2.0\DataAccessLayer.dll
 C:\Users\Avinash\Documents\Paragliding Management System\Paragliding Management System\DataAccessLayer\obj\Debug\netcoreapp2.0\DataAccessLayer.pdb
+D:\ProjectBackup\Core\Paragliding\Paragliding-Management-System\DataAccessLayer\bin\Debug\netcoreapp2.0\DataAccessLayer.deps.json
+D:\ProjectBackup\Core\Paragliding\Paragliding-Management-System\DataAccessLayer\bin\Debug\netcoreapp2.0\DataAccessLayer.dll
+D:\ProjectBackup\Core\Paragliding\Paragliding-Management-System\DataAccessLayer\bin\Debug\netcoreapp2.0\DataAccessLayer.pdb
+D:\ProjectBackup\Core\Paragliding\Paragliding-Management-System\DataAccessLayer\bin\Debug\netcoreapp2.0\Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll
+D:\ProjectBackup\Core\Paragliding\Paragliding-Management-System\DataAccessLayer\bin\Debug\netcoreapp2.0\Microsoft.AspNetCore.Mvc.Core.dll
+D:\ProjectBackup\Core\Paragliding\Paragliding-Management-System\DataAccessLayer\bin\Debug\netcoreapp2.0\Microsoft.AspNetCore.Mvc.DataAnnotations.dll
+D:\ProjectBackup\Core\Paragliding\Paragliding-Management-System\DataAccessLayer\bin\Debug\netcoreapp2.0\Microsoft.Extensions.Identity.Stores.dll
+D:\ProjectBackup\Core\Paragliding\Paragliding-Management-System\DataAccessLayer\bin\Debug\netcoreapp2.0\Microsoft.IdentityModel.Tokens.dll
+D:\ProjectBackup\Core\Paragliding\Paragliding-Management-System\DataAccessLayer\bin\Debug\netcoreapp2.0\Newtonsoft.Json.dll
+D:\ProjectBackup\Core\Paragliding\Paragliding-Management-System\DataAccessLayer\bin\Debug\netcoreapp2.0\Microsoft.AspNetCore.Identity.EntityFrameworkCore.xml
+D:\ProjectBackup\Core\Paragliding\Paragliding-Management-System\DataAccessLayer\bin\Debug\netcoreapp2.0\Microsoft.Extensions.Identity.Stores.xml
+D:\ProjectBackup\Core\Paragliding\Paragliding-Management-System\DataAccessLayer\bin\Debug\netcoreapp2.0\Microsoft.IdentityModel.Tokens.xml
+D:\ProjectBackup\Core\Paragliding\Paragliding-Management-System\DataAccessLayer\bin\Debug\netcoreapp2.0\Microsoft.AspNetCore.Mvc.Core.xml
+D:\ProjectBackup\Core\Paragliding\Paragliding-Management-System\DataAccessLayer\bin\Debug\netcoreapp2.0\Microsoft.AspNetCore.Mvc.DataAnnotations.xml
+D:\ProjectBackup\Core\Paragliding\Paragliding-Management-System\DataAccessLayer\bin\Debug\netcoreapp2.0\Newtonsoft.Json.xml
+D:\ProjectBackup\Core\Paragliding\Paragliding-Management-System\DataAccessLayer\obj\Debug\netcoreapp2.0\DataAccessLayer.csproj.CoreCompileInputs.cache
+D:\ProjectBackup\Core\Paragliding\Paragliding-Management-System\DataAccessLayer\obj\Debug\netcoreapp2.0\DataAccessLayer.AssemblyInfoInputs.cache
+D:\ProjectBackup\Core\Paragliding\Paragliding-Management-System\DataAccessLayer\obj\Debug\netcoreapp2.0\DataAccessLayer.AssemblyInfo.cs
+D:\ProjectBackup\Core\Paragliding\Paragliding-Management-System\DataAccessLayer\obj\Debug\netcoreapp2.0\DataAccessLayer.csproj.CopyComplete
+D:\ProjectBackup\Core\Paragliding\Paragliding-Management-System\DataAccessLayer\obj\Debug\netcoreapp2.0\DataAccessLayer.dll
+D:\ProjectBackup\Core\Paragliding\Paragliding-Management-System\DataAccessLayer\obj\Debug\netcoreapp2.0\DataAccessLayer.pdb
+D:\ProjectBackup\Core\Paragliding\Paragliding-Management-System\DataAccessLayer\obj\Debug\netcoreapp2.0\DataAccessLayer.csprojResolveAssemblyReference.cache

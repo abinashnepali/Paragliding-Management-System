@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Paragliding_Management_System.Extensions;
 using Paragliding_Management_System.Identity;
 using Paragliding_Management_System.Services;
 
@@ -37,12 +38,15 @@ namespace Paragliding_Management_System
                 options.AddPolicy("RequireAdminRole", policy => policy.RequireRole("Superuser"));
             });
 
+            services.AddScoped<IUserClaimsPrincipalFactory<AppUser>, MyUserClaimsPrincipalFactory>();
+
             // Add application services.
             services.AddTransient<IEmailSender, EmailSender>();
             services.AddMvc();
             // Adds a default in memory implementation of IDistributedCache
             services.AddDistributedMemoryCache();
             services.AddTransient(typeof(BookingDbl));
+            services.AddTransient(typeof(UserDbl));
 
             services.AddSession(options =>
             {

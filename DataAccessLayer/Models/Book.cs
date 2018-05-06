@@ -10,12 +10,12 @@ namespace DataAccessLayer
         public int BookID { get; set; }
         [Required]
         public DateTime BookedOn { get; set; }
-        public DateTime BookedFor { get; set; }
+        public DateTime BookedFors { get; set; }
         public bool IsCanceled { get; set; }
         public DateTime CanceledOn { get; set; }
-        public int BookedBy { get; set; }
+        public string BookedBy { get; set; }
         public int BookPilotMappingID { get; set; }
-        public int StaffID { get; set; }
+        public string StaffIDs { get; set; }
         public Users Users { get; set; }
     }
 }

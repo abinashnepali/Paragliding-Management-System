@@ -16,7 +16,7 @@ namespace DataAccessLayer.Operations
 
                 cmd.CommandType = CommandType.StoredProcedure;
 
-                cmd.Parameters.AddWithValue("@userID", user.UserID);
+                cmd.Parameters.AddWithValue("@userID", user.Id);
                 cmd.Parameters.AddWithValue("@firstName", user.FirstName);
                 cmd.Parameters.AddWithValue("@lastName", user.LastName);
                 cmd.Parameters.AddWithValue("@email", user.Email);
@@ -71,12 +71,11 @@ namespace DataAccessLayer.Operations
                 {
                     Users user = new Users();
 
-                    user.UserID = Convert.ToInt32(rdr["UserID"]);
+                    user.Id = rdr["Id"].ToString();
                     user.FirstName = rdr["FirstName"].ToString();
                     user.LastName = rdr["LastName"].ToString();
                     user.Email = rdr["Email"].ToString();
-                    user.RoleType = Convert.ToInt32(rdr["RoleType"]);
-
+                    user.Phone = rdr["PhoneNumber"].ToString();
                     lstUser.Add(user);
                 }
                 con.Close();
@@ -99,7 +98,7 @@ namespace DataAccessLayer.Operations
 
                 while (rdr.Read())
                 {
-                    user.UserID = Convert.ToInt32(rdr["UserID"]);
+                    user.Id = rdr["Id"].ToString();
                     user.FirstName = rdr["FirstName"].ToString();
                     user.LastName = rdr["LastName"].ToString();
                     user.Email = rdr["Email"].ToString();

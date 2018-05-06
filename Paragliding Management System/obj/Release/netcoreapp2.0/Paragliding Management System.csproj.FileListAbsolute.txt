@@ -1,0 +1,14 @@
+D:\ProjectBackup\Core\Paragliding\Paragliding-Management-System\Paragliding Management System\bin\Release\netcoreapp2.0\Paragliding Management System.deps.json
+D:\ProjectBackup\Core\Paragliding\Paragliding-Management-System\Paragliding Management System\bin\Release\netcoreapp2.0\Paragliding Management System.runtimeconfig.json
+D:\ProjectBackup\Core\Paragliding\Paragliding-Management-System\Paragliding Management System\bin\Release\netcoreapp2.0\Paragliding Management System.runtimeconfig.dev.json
+D:\ProjectBackup\Core\Paragliding\Paragliding-Management-System\Paragliding Management System\bin\Release\netcoreapp2.0\Paragliding Management System.dll
+D:\ProjectBackup\Core\Paragliding\Paragliding-Management-System\Paragliding Management System\bin\Release\netcoreapp2.0\Paragliding Management System.pdb
+D:\ProjectBackup\Core\Paragliding\Paragliding-Management-System\Paragliding Management System\bin\Release\netcoreapp2.0\DataAccessLayer.dll
+D:\ProjectBackup\Core\Paragliding\Paragliding-Management-System\Paragliding Management System\bin\Release\netcoreapp2.0\DataAccessLayer.pdb
+D:\ProjectBackup\Core\Paragliding\Paragliding-Management-System\Paragliding Management System\obj\Release\netcoreapp2.0\Paragliding Management System.csprojResolveAssemblyReference.cache
+D:\ProjectBackup\Core\Paragliding\Paragliding-Management-System\Paragliding Management System\obj\Release\netcoreapp2.0\Paragliding Management System.csproj.CoreCompileInputs.cache
+D:\ProjectBackup\Core\Paragliding\Paragliding-Management-System\Paragliding Management System\obj\Release\netcoreapp2.0\Paragliding Management System.AssemblyInfoInputs.cache
+D:\ProjectBackup\Core\Paragliding\Paragliding-Management-System\Paragliding Management System\obj\Release\netcoreapp2.0\Paragliding Management System.AssemblyInfo.cs
+D:\ProjectBackup\Core\Paragliding\Paragliding-Management-System\Paragliding Management System\obj\Release\netcoreapp2.0\Paragliding Management System.csproj.CopyComplete
+D:\ProjectBackup\Core\Paragliding\Paragliding-Management-System\Paragliding Management System\obj\Release\netcoreapp2.0\Paragliding Management System.dll
+D:\ProjectBackup\Core\Paragliding\Paragliding-Management-System\Paragliding Management System\obj\Release\netcoreapp2.0\Paragliding Management System.pdb
