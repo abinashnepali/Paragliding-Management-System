@@ -20,24 +20,22 @@
                         function (data) {
                             htmlDom = "";
                             $.each(data, function (k, v) {
-                                htmlDom += "<div class='col-sm-6 col-md-4'>";
-                                htmlDom += "<div class='thumbnail'>";
+                                htmlDom += "<tr>";
+                                htmlDom += "<td>";
                                 v.photo = v.photo === null ? "/images/noimage.png" : v.photo;
-                                htmlDom += "<img src='" + v.photo + "' alt='" + v.firstName + ' ' + v.lastName + "'>";
-                                htmlDom += "<div class='caption'>";
-                                htmlDom += "<h3>";
+                                htmlDom += "<img src='" + v.photo + "' alt='" + v.firstName + ' ' + v.lastName + "' class='img-responsive img-thumbnail' style='width: 150px; height: auto;'>";
+                                htmlDom += "</td>";
+                                htmlDom += "<td>";
                                 htmlDom += v.firstName + ' ' + v.lastName;
-                                htmlDom += "</h3>";
-                                htmlDom += "<p>Pilot</P>";
-                                htmlDom += "<p>";
-                                htmlDom += "<a class='btn btn-success cart-pilot btn-space' data-staffid='" + v.staffID + "' data-staffName='" + v.firstName + ' ' + v.lastName +  "' role='button'>Hire</a>";
-                                htmlDom += " <a class='btn btn-warning hide-pilot btn-space' role='button'>Hide</a>";
-                                htmlDom += "</p>";
-                                htmlDom += "</div>";
-                                htmlDom += "</div>";
-                                htmlDom += "</div>";
+                                htmlDom += "</td>";
+                                htmlDom += "<td>";
+                                htmlDom += "<button type='button' class='btn btn-success cart-pilot btn-space' data-staffid='" + v.staffID + "' data-staffName='" + v.firstName + ' ' + v.lastName +  "'>Hire</button>";
+                                htmlDom += "<button type='button' class='btn btn-warning hide-pilot btn-space'>Hide</button>";
+                                htmlDom += "</td>";
+                                htmlDom += "</tr>";
                             });
                             $('#staffList').html(htmlDom);
+                            localStorage.BookedFor = $(this).val();
                         }).fail(function () {
                             console.log("something went wrong.");
                         });
@@ -54,7 +52,7 @@
                         localStorage.clickcount = 1;
                     }
                     $cartItem.text(localStorage.clickcount);
-                    $cartArr.push({ "BookID": 0, "BookedFor": $('#datepicker').val(), "StaffID": $this.attr('data-staffid'), "StaffName": $this.attr('data-staffname') });
+                    $cartArr.push({ "StaffID": $this.attr('data-staffid'), "StaffName": $this.attr('data-staffname') });
                     localStorage.cartVar = JSON.stringify($cartArr);
                 } else {
                     messageDisplay("Sorry, your browser does not support web storage...", "error");

@@ -4,36 +4,6 @@
         var $bukDiv = $('#bookingDv');
         var $bukDivTable = $('#bookingDv').find('#cartBody');
         var $cartArr = '';
-        var config = {
-            isPostBack: false,
-            async: false,
-            cache: false,
-            type: 'POST',
-            contentType: "application/json; charset=utf-8",
-            data: { data: '' },
-            dataType: 'json',
-            method: "",
-            successMethod: "",
-            errorMethod: "",
-            headers: "",
-        };
-        function ajaxCall(config) {
-            $.ajax({
-                type: config.type,
-                contentType: config.contentType,
-                cache: config.cache,
-                url: config.method,
-                data: config.data,
-                dataType: config.dataType,
-                success: config.successMethod,
-                error: config.errorMethod,
-                async: config.async,
-                headers: config.headers,
-            });
-        };
-        function ajaxFailure(error) {
-            console.log(error);
-        };
         function loadCart() {
             if (typeof (Storage) !== "undefined") {
                 if (localStorage.cartVar) {
@@ -50,50 +20,59 @@
         };
         function other() {
             $bukDiv.on('click', '#createBooking', function () {
-                var currentUrl = window.location.pathname;
-                var redirectUrl = $("#RedirectTo").val() + '?ReturnUrl=' + currentUrl;
                 if (localStorage.cartVar !== '[]') {
-                    var i = 0, len = $cartArr.length, BookedBy = '', StaffID = '', BookedFor = '';
-                    for (i; i < len; i++) {
-                        BookedFor = $cartArr[0].BookedFor;
-                        StaffID += $cartArr[i].StaffID + ',';
-                    }
-                    if (userIDTemp === "") {
-                        window.location.href = redirectUrl;
-                    } else {
-                        saveBooking(0, userIDTemp, StaffID, BookedFor);
-                    }
+                    //var BookedFor = $cartArr[i].BookedFor;
+                    //var BookedBy = $cartArr[i].BookedBy;
+                    //var StaffID = $cartArr[i].StaffID;
+                    //saveBooking(0, BookedFor, BookedBy, StaffID);
+                    saveBooking(localStorage.cartVar);
                 } else {
                     messageDisplay('Cart Is Empty', 'error');
                 }
             });
             $bukDiv.on('click', '#remCart', function () {
                 var staffID = $(this).attr('data-stafid');
-                var i = 0, len = $cartArr.length;
-                for (i; i < len; i++) {
-                    if ($cartArr[i].StaffID && $cartArr[i].StaffID === staffID) {
-                        $cartArr.splice(i, 1);
-                        break;
+                var result = $cartArr.filter(function (staff) {
+                    if (staff.StaffID == staffID) {
+                        return false;
                     }
-                }
-                $bukDivTable.find('#tr' + staffID).remove();
-                localStorage.cartVar = JSON.stringify($cartArr);
-            });
-            function saveBooking(BookID, BookedBy, StaffID, BookedFor) {
-                config.method = "api/Book/Save";
-                config.data = JSON.stringify({
-                    BookID: BookID,
-                    BookedFors: BookedFor,
-                    BookedBy: BookedBy
+                    return true;
                 });
-                config.successMethod = saveBookingSuccess;
-                config.errorMethod = ajaxFailure;
-                config.contentType = "application/json",
-                    ajaxCall(config);
-            };
-            function saveBookingSuccess(data) {
-                var res = data;
-                console.log(res);
+                $bukDivTable.find('#tr' + staffID).remove();
+                localStorage.cartVar = JSON.stringify(result);
+            });
+            function saveBooking(bookList) {
+                //var form = $('#frmBook');
+                //var validator = form.validate(),
+                //    serialized = form.serializeArray(),
+                //    data = {};
+                //if (!validator.valid()) { return; }
+                //// turn the array of form properties into a regular JavaScript object
+                //for (var i = 0; i < serialized.length; i++) {
+                //    data[serialized[i].name] = serialized[i].value;
+                //}
+                //config.method = "api/Book/Save";
+                //config.data = JSON.stringify({
+                //    //BookID: BookID,
+                //    //BookedFor: BookedFor,
+                //    //BookedBy: BookedBy,
+                //    //StaffID: StaffID
+                //    bookList
+                //});
+                //config.successMethod = saveBookingSuccess;
+                //config.errorMethod = function (error) {
+                //    ajaxFailure(error, validator);
+                //};
+                //ajaxCall(config);
+
+                $.ajax({
+                    type: 'POST',
+                    url: 'api/Book/Save',
+                    data: JSON.stringify(bookList),
+                    dataType: 'json',
+                    contentType: 'application/json; charset=utf-8',
+                    success: function (data) { console.log(data); }
+                });
             };
             function messageDisplay(message, msgType) {
                 msgType = msgType.toLowerCase();
