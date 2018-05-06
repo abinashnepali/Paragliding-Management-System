@@ -48,7 +48,7 @@ namespace DataAccessLayer.Operations
 
                 while (rdr.Read())
                 {
-                    user.UserID = Convert.ToInt32(rdr["UserID"]);
+                    user.Id = rdr["Id"].ToString();
                     user.FirstName = rdr["FirstName"].ToString();
                     user.LastName = rdr["LastName"].ToString();
                     user.Email = rdr["Email"].ToString();
@@ -95,7 +95,7 @@ namespace DataAccessLayer.Operations
                 {
                     Users user = new Users();
 
-                    user.UserID = Convert.ToInt32(rdr["UserID"]);
+                    user.Id = rdr["Id"].ToString();
                     user.FirstName = rdr["FirstName"].ToString();
                     user.LastName = rdr["LastName"].ToString();
                     user.Email = rdr["Email"].ToString();
@@ -123,7 +123,7 @@ namespace DataAccessLayer.Operations
 
                 while (rdr.Read())
                 {
-                    user.UserID = Convert.ToInt32(rdr["UserID"]);
+                    user.Id = rdr["Id"].ToString();
                     user.FirstName = rdr["FirstName"].ToString();
                     user.LastName = rdr["LastName"].ToString();
                     user.Email = rdr["Email"].ToString();

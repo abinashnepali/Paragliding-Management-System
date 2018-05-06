@@ -20,16 +20,21 @@ namespace DataAccessLayer.Operations
                 {
                     Book book = new Book();
                     Users user = new Users();
-                    user.UserID = Convert.ToInt32(rdr["UserID"]);
+                    user.Id = rdr["Id"].ToString();
                     user.FirstName = rdr["FirStName"].ToString();
                     user.LastName = rdr["LaStName"].ToString();
                     user.Email = rdr["Email"].ToString();
                     book.BookID = Convert.ToInt32(rdr["BookID"]);
-                    book.BookedBy = Convert.ToInt32(rdr["BookedBy"]);
-                    book.BookedFor = Convert.ToDateTime(rdr["BookedFor"]);
+                    //book.BookedBy = Convert.ToInt32(rdr["BookedBy"]);
+                    //book.BookedFor = Convert.ToDateTime(rdr["BookedFor"]);
+                    //book.BookedOn = Convert.ToDateTime(rdr["BookedOn"]);
+                    ////book.CanceledOn = Convert.ToDateTime(rdr["CanceledOn"]);
+                    //book.StaffID = Convert.ToInt32(rdr["StaffID"]);
+                    book.BookedBy = rdr["BookedBy"].ToString();
+                    book.BookedFors = Convert.ToDateTime(rdr["BookedFor"]);
                     book.BookedOn = Convert.ToDateTime(rdr["BookedOn"]);
                     //book.CanceledOn = Convert.ToDateTime(rdr["CanceledOn"]);
-                    book.StaffID = Convert.ToInt32(rdr["StaffID"]);
+                    book.StaffIDs = rdr["StaffIDs"].ToString();
                     book.Users = user;
                     lstBook.Add(book);
                 }
@@ -50,16 +55,21 @@ namespace DataAccessLayer.Operations
                 SqlDataReader rdr = cmd.ExecuteReader();
                 while (rdr.Read())
                 {
-                    user.UserID = Convert.ToInt32(rdr["UserID"]);
+                    user.Id = rdr["Id"].ToString();
                     user.FirstName = rdr["FirStName"].ToString();
                     user.LastName = rdr["LaStName"].ToString();
                     user.Email = rdr["Email"].ToString();
                     book.BookID = Convert.ToInt32(rdr["BookID"]);
-                    book.BookedBy = Convert.ToInt32(rdr["BookedBy"]);
-                    book.BookedFor = Convert.ToDateTime(rdr["BookedFor"]);
+                    //book.BookedBy = Convert.ToInt32(rdr["BookedBy"]);
+                    //book.BookedFor = Convert.ToDateTime(rdr["BookedFor"]);
+                    //book.BookedOn = Convert.ToDateTime(rdr["BookedOn"]);
+                    ////book.CanceledOn = Convert.ToDateTime(rdr["CanceledOn"]);
+                    //book.StaffID = Convert.ToInt32(rdr["StaffID"]);
+                    book.BookedBy = rdr["BookedBy"].ToString();
+                    book.BookedFors = Convert.ToDateTime(rdr["BookedFor"]);
                     book.BookedOn = Convert.ToDateTime(rdr["BookedOn"]);
                     //book.CanceledOn = Convert.ToDateTime(rdr["CanceledOn"]);
-                    book.StaffID = Convert.ToInt32(rdr["StaffID"]);
+                    book.StaffIDs = rdr["StaffID"].ToString();
                     book.Users = user;
                 }
                 con.Close();
@@ -75,9 +85,9 @@ namespace DataAccessLayer.Operations
                     SqlCommand cmd = new SqlCommand("Booking_AddUpdate", con);
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.Parameters.AddWithValue("@BookID", book.BookID);
-                    cmd.Parameters.AddWithValue("@BookedFor", book.BookedFor);
+                    cmd.Parameters.AddWithValue("@BookedFors", book.BookedFors);
                     cmd.Parameters.AddWithValue("@BookedBy", book.BookedBy);
-                    cmd.Parameters.AddWithValue("@StaffID", book.StaffID);
+                    cmd.Parameters.AddWithValue("@StaffIDs", book.StaffIDs);
 
                     SqlParameter outPutParameter = new SqlParameter();
                     outPutParameter.ParameterName = "@status";
