@@ -20,21 +20,13 @@ namespace DataAccessLayer.Operations
                 {
                     Book book = new Book();
                     Users user = new Users();
-                    user.Id = rdr["Id"].ToString();
-                    user.FirstName = rdr["FirStName"].ToString();
-                    user.LastName = rdr["LaStName"].ToString();
-                    user.Email = rdr["Email"].ToString();
+                    user.Id = rdr["UserId"].ToString();
+                    user.UserName = rdr["UserName"].ToString();
                     book.BookID = Convert.ToInt32(rdr["BookID"]);
-                    //book.BookedBy = Convert.ToInt32(rdr["BookedBy"]);
-                    //book.BookedFor = Convert.ToDateTime(rdr["BookedFor"]);
-                    //book.BookedOn = Convert.ToDateTime(rdr["BookedOn"]);
-                    ////book.CanceledOn = Convert.ToDateTime(rdr["CanceledOn"]);
-                    //book.StaffID = Convert.ToInt32(rdr["StaffID"]);
-                    book.BookedBy = rdr["BookedBy"].ToString();
                     book.BookedFors = Convert.ToDateTime(rdr["BookedFor"]);
                     book.BookedOn = Convert.ToDateTime(rdr["BookedOn"]);
-                    //book.CanceledOn = Convert.ToDateTime(rdr["CanceledOn"]);
-                    book.StaffIDs = rdr["StaffIDs"].ToString();
+                    book.StaffIDs = rdr["StaffID"].ToString();
+                    book.FirstName = rdr["FirstName"].ToString();
                     book.Users = user;
                     lstBook.Add(book);
                 }
@@ -55,20 +47,11 @@ namespace DataAccessLayer.Operations
                 SqlDataReader rdr = cmd.ExecuteReader();
                 while (rdr.Read())
                 {
-                    user.Id = rdr["Id"].ToString();
-                    user.FirstName = rdr["FirStName"].ToString();
-                    user.LastName = rdr["LaStName"].ToString();
-                    user.Email = rdr["Email"].ToString();
+                    user.Id = rdr["UserId"].ToString();
+                    user.UserName = rdr["UserName"].ToString();
                     book.BookID = Convert.ToInt32(rdr["BookID"]);
-                    //book.BookedBy = Convert.ToInt32(rdr["BookedBy"]);
-                    //book.BookedFor = Convert.ToDateTime(rdr["BookedFor"]);
-                    //book.BookedOn = Convert.ToDateTime(rdr["BookedOn"]);
-                    ////book.CanceledOn = Convert.ToDateTime(rdr["CanceledOn"]);
-                    //book.StaffID = Convert.ToInt32(rdr["StaffID"]);
-                    book.BookedBy = rdr["BookedBy"].ToString();
                     book.BookedFors = Convert.ToDateTime(rdr["BookedFor"]);
                     book.BookedOn = Convert.ToDateTime(rdr["BookedOn"]);
-                    //book.CanceledOn = Convert.ToDateTime(rdr["CanceledOn"]);
                     book.StaffIDs = rdr["StaffID"].ToString();
                     book.Users = user;
                 }
