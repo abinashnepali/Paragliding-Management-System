@@ -40,7 +40,7 @@
                     $cartArr = JSON.parse(localStorage.cartVar);
                     var html = '', i = 0, len = $cartArr.length;
                     for (i; i < len; i++) {
-                        html += '<tr id="tr' + $cartArr[i].StaffID + '"><td>' + $cartArr[i].StaffName + '</td><td>' + localStorage.BookedFor + '</td><td><a class="btn btn-danger" id="remCart" href="javascript:void(0)" data-stafid=' + $cartArr[i].StaffID + '><i class="glyphicon glyphicon-trash"></i>Remove From Cart</a></td></tr>';
+                        html += '<tr id="tr' + $cartArr[i].StaffID + '"><td>' + $cartArr[i].StaffName + '</td><td>' + $cartArr[i].BookedFor + '</td><td><a class="btn btn-danger" id="remCart" href="javascript:void(0)" data-stafid=' + $cartArr[i].StaffID + '><i class="glyphicon glyphicon-trash"></i>Remove From Cart</a></td></tr>';
                     }
                     $bukDivTable.html(html);
                 }
@@ -54,14 +54,15 @@
                 var currentUrl = window.location.pathname;
                 var redirectUrl = $("#RedirectTo").val() + '?ReturnUrl=' + currentUrl;
                 if (localStorage.cartVar !== '[]') {
-                    var i = 0, len = $cartArr.length, BookedBy = '', StaffID = '';
+                    var i = 0, len = $cartArr.length, BookedBy = '', StaffID = '', BookedFor = '';
                     for (i; i < len; i++) {
+                        BookedFor = $cartArr[0].BookedFor;
                         StaffID += $cartArr[i].StaffID + ',';
                     }
                     if (userIDTemp === "") {
                         window.location.href = redirectUrl;
                     } else {
-                        saveBooking(0, userIDTemp, StaffID);
+                        saveBooking(0, userIDTemp, StaffID, BookedFor);
                     }
                 } else {
                     messageDisplay('Cart Is Empty', 'error');
@@ -83,18 +84,19 @@
                 $bukDivTable.find('#tr' + staffID).remove();
                 localStorage.cartVar = JSON.stringify($cartArr);
             });
+
             function saveBooking(BookID, BookedBy, StaffID) {
                 config.type = "POST";
                 config.method = "api/Book/Save";
                 config.data = JSON.stringify({
                     BookID: BookID,
-                    BookedFors: localStorage.BookedFor,
-                    BookedBy: BookedBy,
-                    StaffIDs: StaffID
+                    BookedFors: BookedFor,
+                    BookedBy: BookedBy
                 });
                 config.successMethod = saveBookingSuccess;
                 config.errorMethod = ajaxFailure;
-                ajaxCall(config);
+                config.contentType = "application/json",
+                    ajaxCall(config);
             };
             function saveBookingSuccess(data) {
                 var res = data;
