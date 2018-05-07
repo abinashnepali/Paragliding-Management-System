@@ -16,6 +16,7 @@ namespace DataAccessLayer
         public string BookedBy { get; set; }
         public int BookPilotMappingID { get; set; }
         public string StaffIDs { get; set; }
+        public string FirstName { get; set; }
         public Users Users { get; set; }
     }
 }

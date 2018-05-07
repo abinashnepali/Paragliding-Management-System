@@ -8,7 +8,7 @@
             </a>
         </div>
         <div class="top-buffer"></div>
-        <table class="table table-bordered table-striped table-condensed">
+        <table id="cartHead" class="table table-bordered table-striped table-condensed">
             <thead>
                 <tr>
                     <th>Pilot</th>
@@ -17,6 +17,18 @@
                 </tr>
             </thead>
             <tbody id="cartBody"></tbody>
+        </table>
+        <table id="cartTblHd" class="table table-bordered table-striped table-condensed" style="display:none;">
+            <thead>
+                <tr>
+                    <th>UserName</th>
+                    <th>Pilot</th>
+                    <th>Booked On</th>
+                    <th>Booked For</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody id="cartTableBody"></tbody>
         </table>
     </div>
 </div>

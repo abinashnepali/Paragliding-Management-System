@@ -12,6 +12,7 @@
                 dateFormat: 'yy-mm-dd',
                 onSelect: function () {
                     $('#pilotList').show();
+                    localStorage.BookedFor = $(this).val();
                     $.get("api/pilot/search",
                         {
                             offSet: 0,
@@ -37,7 +38,7 @@
                                 htmlDom += "</div>";
                                 htmlDom += "</div>";
                             });
-                            $('#staffList').html(htmlDom);
+                            $('#staffList').html(htmlDom);                           
                         }).fail(function () {
                             console.log("something went wrong.");
                         });
