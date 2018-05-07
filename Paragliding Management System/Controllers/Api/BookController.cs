@@ -49,8 +49,8 @@ namespace Paragliding_Management_System.Controllers.Api
         [HttpPost]
         public IActionResult DELETE(int? staffId)
         {
-            var booking = bookingDbl.BookingCancel(staffId);
-            return Ok(booking);
+            bookingDbl.BookingCancel(staffId);
+            return Ok();
         }
 
     }

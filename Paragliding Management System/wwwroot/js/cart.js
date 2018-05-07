@@ -49,6 +49,7 @@
             }
         };
         function other() {
+            loadBooking();
             $bukDiv.on('click', '#createBooking', function () {
                 var currentUrl = window.location.pathname;
                 var redirectUrl = $("#RedirectTo").val() + '?ReturnUrl=' + currentUrl;
@@ -66,6 +67,10 @@
                     messageDisplay('Cart Is Empty', 'error');
                 }
             });
+            $bukDiv.on('click', '#cancel-book', function () {
+                var bookID = $(this).attr('data-bookid');
+                cancelBooking(bookID);
+            });
             $bukDiv.on('click', '#remCart', function () {
                 var staffID = $(this).attr('data-stafid');
                 var i = 0, len = $cartArr.length;
@@ -79,6 +84,7 @@
                 localStorage.cartVar = JSON.stringify($cartArr);
             });
             function saveBooking(BookID, BookedBy, StaffID) {
+                config.type = "POST";
                 config.method = "api/Book/Save";
                 config.data = JSON.stringify({
                     BookID: BookID,
@@ -92,8 +98,55 @@
             };
             function saveBookingSuccess(data) {
                 var res = data;
-                console.log(res);
+                switch (res) {
+                    case 0:
+                        loadBooking();
+                        messageDisplay('Pilot Booked Successfully', 'success');
+                        break;
+                    case 1:
+                        messageDisplay('Pilot Already Booked For This Date', 'success');
+                        break;
+                    default:
+                }
             };
+            function loadBooking() {
+                config.type = "GET";
+                config.method = "api/Book/All";
+                config.data = '';
+                config.successMethod = loadBookingSuccess;
+                config.errorMethod = ajaxFailure;
+                ajaxCall(config);
+            };
+            function loadBookingSuccess(data) {
+                $('#cartHead').hide();
+                $('#cartTblHd').show();
+                var html = '';
+                var i = 0, len = data.length;
+                for (i; i < len; i++) {
+                    html += '<tr><td>';
+                    html += data[i].users.userName;
+                    html += '</td><td>';
+                    html += data[i].firstName;
+                    html += '</td><td>';
+                    html += data[i].bookedOn;
+                    html += '</td><td>';
+                    html += data[i].bookedFors;
+                    html += '</td><td><button id="cancel-book" type="button" class="btn btn-success cancel-book btn-space" data-bookid="' + data[i].bookID + '">Cancel Booking</button>';
+                }
+                $('#cartTableBody').html(html);
+            }
+            function cancelBooking(bookID) {
+                config.type = "POST";
+                config.method = "api/Book/Cancel/" + bookID;
+                config.data = '';
+                config.dataType = '';
+                config.successMethod = cancelBookingSuccess;
+                config.errorMethod = ajaxFailure;
+                ajaxCall(config);
+            };
+            function cancelBookingSuccess() {
+                messageDisplay('Booking Canceled Successfully', 'success');
+            }
             function messageDisplay(message, msgType) {
                 msgType = msgType.toLowerCase();
                 if (msgType === 'info') {
@@ -123,7 +176,7 @@
             };
         };
         $this.init = function () {
-            loadCart();
+            loadCart();           
             other();
         };
     }
