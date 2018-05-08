@@ -1,6 +1,9 @@
 ﻿using DataAccessLayer;
 using DataAccessLayer.Operations;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using System.Security.Claims;
 
 namespace Paragliding_Management_System.Controllers.Api
 {
@@ -12,12 +15,21 @@ namespace Paragliding_Management_System.Controllers.Api
         {
             this.bookingDbl = bookingDbl;
         }
-
         [Route("All")]
         [HttpGet]
         public IActionResult GET()
         {
-            var booking = bookingDbl.GetAllBooking();
+            //var booking = bookingDbl.GetAllBooking();
+            //return Ok(booking);
+            return Ok();
+        }
+
+        [Route("History")]
+        [HttpGet]
+        public IActionResult Histroy()
+        {
+            var userId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
+            var booking = bookingDbl.GetAllBooking(userId);
             return Ok(booking);
         }
 
