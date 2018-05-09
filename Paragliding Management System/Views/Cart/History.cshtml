@@ -1,0 +1,38 @@
+﻿<div class="top-buffer"></div>
+<div id="bookingDv" class="panel panel-primary">
+    <div class="panel-heading panel-head">Booking List</div>
+    <div class="panel-body">
+        <div class="top-buffer"></div>
+        <table id="cartHead" class="table table-bordered table-striped table-condensed">
+            <thead>
+                <tr>
+                    <th>Pilot</th>
+                    <th>Booked For</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody id="cartBody"></tbody>
+        </table>
+        <table id="cartTblHd" class="table table-bordered table-striped table-condensed" style="display:none;">
+            <thead>
+                <tr>
+                    @*<th>UserName</th>*@
+                    <th>Pilot</th>
+                    <th>Booked On</th>
+                    <th>Booked For</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody id="cartTableBody"></tbody>
+        </table>
+    </div>
+</div>
+@Html.Hidden("RedirectTo", Url.Action("Login", "Account"))
+@section Scripts
+    {
+    <script>
+    var userIDTemp = '@(ViewBag.UID)';
+    var userNameTemp = '@(ViewBag.UName)';
+    </script>
+    <script src="~/js/bookHistory.js" asp-append-version="true"></script>
+}
