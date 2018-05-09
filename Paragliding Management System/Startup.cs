@@ -29,8 +29,10 @@ namespace Paragliding_Management_System
             services.AddDbContext<UsersDbContext>(options =>
                options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 
-            services.AddIdentity<AppUser, IdentityRole>()
-                .AddEntityFrameworkStores<UsersDbContext>()
+            services.AddIdentity<AppUser, IdentityRole>(config =>
+            {
+                config.SignIn.RequireConfirmedEmail = true;
+            }).AddEntityFrameworkStores<UsersDbContext>()
                 .AddDefaultTokenProviders();
 
             services.AddAuthorization(options =>
@@ -69,7 +71,7 @@ namespace Paragliding_Management_System
                                                                     // will default to 
                                                                     // /Account/AccessDenied
                 options.SlidingExpiration = true;
-            });           
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -96,7 +98,7 @@ namespace Paragliding_Management_System
                 routes.MapRoute(
                     name: "default",
                     template: "{controller=Home}/{action=Index}/{id?}");
-            });           
+            });
         }
     }
 }
